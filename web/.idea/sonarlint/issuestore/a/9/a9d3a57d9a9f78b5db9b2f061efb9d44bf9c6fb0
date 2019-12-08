@@ -1,0 +1,5 @@
+
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ßìÂ²æ-
+\squid:S2130"9Use "Integer.parseInt" for this string-to-int conversion.(àğ½òıÿÿÿÿ8úŞ°µå-
+hsquid:UselessImportCheck"8Remove this unused import 'by.epam.web.entity.Exercise'.(¾¡º›ûÿÿÿÿ8ßìÂ²æ-
+msquid:UselessImportCheck"BRemove this unused import 'javax.servlet.http.HttpServletRequest'.(ø©¹…8œç¼ê-

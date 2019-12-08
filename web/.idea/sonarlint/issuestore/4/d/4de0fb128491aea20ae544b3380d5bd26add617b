@@ -1,0 +1,11 @@
+
+W
+squid:S899;":Do something with the "boolean" value returned by "offer".(Á‘8Øä´Äß-
+Fsquid:S11483"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8‘ñ­Äß-
+psquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ø¨¿8ÎšÔÔç-
+W
+squid:S899&":Do something with the "boolean" value returned by "offer".(Á‘8½› Äß-
+psquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÙ¬8¡şÓÔç-
+osquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øÜÚR8Ù»ÔÔç-
+dsquid:S21422"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8‘ñ­Äß-
+dsquid:S2142E"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8İœ¹Äß-

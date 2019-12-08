@@ -1,0 +1,95 @@
+body{
+    background-image: url(../img/dumb.jpg);
+    margin: 0;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.dws-wrapper{
+    background-color: rgba(255, 255, 255, 0.21);
+    padding: 10px;
+    width: 330px;
+}
+.dws-wrapper a{
+    text-decoration: none;
+    transition: .5s;
+    color: cornflowerblue;
+}
+.dws-wrapper a:hover{
+    color: cyan;
+}
+.dws-wrapper input{
+    display: block;
+    width: 100%;
+}
+.tab-form{
+    background-color: white;
+    display: none;
+    padding: 30px 20px 20px;
+}
+.tab-form.active,
+#tab-1:checked ~ #form-1,
+#tab-2:checked ~ #form-2{
+    display: block;
+}
+
+.registration-field-wrapper{
+    border-bottom: red 1px solid;
+    border-left: red 1px solid;
+    border-right: red 1px solid;
+    z-index:10;
+    width:100%;
+    border-radius:5px;
+    background-color:#fad9d9;
+    margin-bottom: 10px;
+}
+
+label.tab{
+    color: #ffffff;
+    font-weight: 600;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 3px 3px 0 0;
+    margin-bottom: -1px;
+    cursor: pointer;
+}
+label.tab.active,
+input[name="tabs"]:checked + label   {
+    background-color: white;
+    color: #1d5f75;
+}
+input[name="tabs"]{
+    display: none;
+}
+
+.input{
+    font-size: 16px;
+    border: 2px solid #e9eaea;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    color: #1e8da6;
+    outline: none;
+}
+
+a.button{
+    background: #298cad;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 46px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.invisible{
+    display:none;
+}
+
+.invalid-value-label-clients{
+    color:red;
+    width:100%;
+    padding:5px;
+}

@@ -1,0 +1,129 @@
+body{
+    background-image: url(../img/dumb.jpg);
+    margin: 0;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.form-wrapper{
+    background-color: rgba(255, 255, 255, 0.21);
+    width: 290px;
+    padding: 24px 24px 0;
+    margin: 1px;
+    border: 1px solid #CAD8DE;
+    border-radius: 4px;
+    font: 14px/18px Arial, Tahoma, sans-serif;
+    color: #444;
+    border-radius:10px;
+}
+.field{
+    margin: 0 0 18px;
+}
+.field label{
+    color: lightseagreen;
+    font-weight: 600;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+}
+.field input{
+    font-size: 12px;
+    border: 2px solid #e9eaea;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    color: #1e8da6;
+    outline: none;
+    display: block;
+    width: 100%;
+}
+#form-1{
+    background-color: white;
+    padding: 30px 20px 20px;
+    border-radius: 15px
+}
+#form-2{
+    background-color: white;
+    padding: 30px 20px 20px;
+    border-radius: 15px
+}
+a.button{
+    background: #298cad;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 46px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.two-form-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    align-items: baseline;
+    align-content: stretch;
+}
+.main-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    border-collapse: collapse;
+    color: #686461;
+    border: 50px solid rgba(91, 255, 247, 0.2);
+}
+caption {
+    padding: 10px;
+    color: white;
+    background: #8FD4C1;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+th {
+    border-bottom: 3px solid #B9B29F;
+    padding: 10px;
+    text-align: left;
+}
+td {
+    padding: 10px;
+}
+tr:nth-child(odd) {
+    background: white;
+}
+tr:nth-child(even) {
+    background: #E8E6D1;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+#form-1 .caption{
+    text-align: center;
+    color: lightseagreen;
+    margin: 70px;
+    font-size: 18px;
+}
+.invalid-value-label-clients{
+    color:red;
+    width:100%;
+    padding:5px;
+}

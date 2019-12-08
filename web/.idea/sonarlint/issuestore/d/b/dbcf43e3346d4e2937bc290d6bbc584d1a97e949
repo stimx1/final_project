@@ -1,0 +1,5 @@
+
+¤squid:S11860"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(è£—íùÿÿÿÿ8¡‹É¦è-
+|squid:UselessImportCheck"LRemove this unused import 'by.epam.web.exception.DBConnectionPoolException'.(ÛÏáÇúÿÿÿÿ8–°Á¦è-
+Isquid:S11685"+Return an empty collection instead of null.(¥¹ï8¤ã±æ-
+Zsquid:UselessImportCheck"/Remove this unused import 'java.sql.Statement'.(ÏÖÔø8°¾È¦è-

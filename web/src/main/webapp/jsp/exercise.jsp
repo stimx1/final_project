@@ -28,14 +28,13 @@
                 <td>${elem.id}</td>
                 <td>${elem.name}</td>
                 <td>${elem.description}</td>
-                <td><a href="/controller?command=delete_exercise&exerciseId=${elem.id}&redirect=/controller?command=get_exercises" class="button">Delete</a></td>
+                <td><a href="/controller?command=delete_exercise&exerciseId=${elem.id}" class="button">Delete</a></td>
             </tr>
         </c:forEach>
         <tr>
             <td>?</td>
             <form id="form-2">
                 <input type="hidden" name="command" value="add_exercise"/>
-                <input type="hidden" name="redirect" value="/controller?command=get_exercises">
                 <td><input type="text" name="exerciseName" value=""/></td>
                 <td><input type="text" name="exerciseDescription" value=""/></td>
                 <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;">Add</a></td>

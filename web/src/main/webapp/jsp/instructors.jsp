@@ -32,8 +32,8 @@
             <tr>
                 <td>${elem.id}</td>
                 <td>${elem.lastName}</td>
-                <td>${elem.info}</td>
                 <td>${elem.firstName}</td>
+                <td>${elem.info}</td>
                 <td>
                     <c:choose>
                         <c:when test="${ selectedId eq elem.id }">
@@ -43,13 +43,12 @@
                             <form action="/controller" method="post" id="form-1" >
                                 <input type="radio" name="instructorId" value="${elem.id}" onchange="this.form.submit()"/>
                                 <input type="hidden" name="command" value="change_instructor"/>
-                                <input type="hidden" name="redirect" value="/controller?command=get_instructors"/>
                             </form>
                         </c:otherwise>
                     </c:choose>
                 </td>
                 <td><c:if test="${ currentUser.role eq 'ADMIN' }">
-                    <a href="/controller?command=delete_instructor&instructor_id=${elem.id}&redirect=/controller?command=get_instructors" >delete</a>
+                    <a href="/controller?command=delete_instructor&instructorId=${elem.id}" >delete</a>
                 </c:if></td>
             </tr>
         </c:forEach>
@@ -58,7 +57,6 @@
                 <td>?</td>
                 <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_instructor"/>
-                    <input type="hidden" name="redirect" value="/controller?command=get_instructors">
                     <td><input type="text" name="first_name" value=""/></td>
                     <td><input type="text" name="last_name" value=""/></td>
                     <td><input type="text" name="info" value=""/></td>

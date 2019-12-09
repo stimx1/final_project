@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxxx
@@ -8,7 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<fmt:setLocale value="${locale}" scope="session"/>
+<fmt:setBundle basename="account" var="val"/>
 <head>
     <title>User account</title>
     <link href="../css/account-style.css" rel="stylesheet" type="text/css"/>
@@ -19,46 +21,46 @@
     <div class="two-form-wrapper">
         <div class="form-wrapper">
             <form action="/controller" id="form-1">
-                <label class="caption">Change</label>
+                <label class="caption"><fmt:message key="label.title" bundle="${val}"/></label>
                 <div class="field">
-                    <label>First name:</label>
+                    <label><fmt:message key="label.firstName" bundle="${val}"/>:</label>
                     <input type="text" name="firstName" value="${currentUser.firstName}"/>
                 </div>
                 <div class="field">
-                    <label>Last name:</label>
+                    <label><fmt:message key="label.lastName" bundle="${val}"/>:</label>
                     <input type="text" name="lastName" value="${currentUser.lastName}"/>
                 </div>
                 <div class="field">
-                    <label>Email: </label>
+                    <label><fmt:message key="label.email" bundle="${val}"/>: </label>
                     <input type="email" name="email" value="${currentUser.email}"/>
                 </div>
                 <div class="field">
-                    <label>Password: </label>
+                    <label><fmt:message key="label.password" bundle="${val}"/>: </label>
                     <input type="password" name="password" value=""/>
                 </div>
                 <div class="field">
-                    <label>Repeat password: </label>
+                    <label><fmt:message key="label.repeatPassword" bundle="${val}"/>: </label>
                     <input type="password" name="repeatedPassword" value=""/>
                 </div>
                 <input type="hidden" name="command" value="update_user"/>
                 <a href="#" class="button"
-                   onclick="document.getElementById('form-1').submit(); return false;">Войти</a>
+                   onclick="document.getElementById('form-1').submit(); return false;"><fmt:message key="button.update" bundle="${val}"/></a>
             </form>
         </div>
         <div class="form-wrapper">
             <div class="field">
-                <label>Balance : ${amount}</label>
+                <label><fmt:message key="label.balance" bundle="${val}"/> : ${amount}</label>
             </div>
             <form action="/controller" id="form-2" method="post">
                 <div class="field">
-                    <label>Пополнить счёт</label>
-                    <input type="text" name="amount" value="" placeholder="Сумма"/>
+                    <label><fmt:message key="label.deposit" bundle="${val}"/></label>
+                    <input type="text" name="amount" value="" placeholder="<fmt:message key="label.amount" bundle="${val}"/>"/>
                 </div>
                 <input type="hidden" name="currentAmount" value="${amount}">
                 <input type="hidden" name="command" value="deposit_account"/>
                 <label class="invalid-value-label-clients">${errorBalanceMessage}</label>
                 <a href="#" class="button"
-                   onclick="document.getElementById('form-2').submit(); return false;">Войти</a>
+                   onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.deposit" bundle="${val}"/></a>
             </form>
         </div>
     </div>

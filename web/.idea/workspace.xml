@@ -270,7 +270,8 @@
       <workItem from="1575636333869" duration="4023000" />
       <workItem from="1575648918112" duration="6129000" />
       <workItem from="1575721441289" duration="19045000" />
-      <workItem from="1575799887884" duration="15043000" />
+      <workItem from="1575799887884" duration="15299000" />
+      <workItem from="1575876282972" duration="2577000" />
     </task>
     <servers />
   </component>
@@ -287,23 +288,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/command/user/AssignDietCommand.java</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteDietCommand.java</url>
-          <line>18</line>
+          <line>19</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteDietCommand.java</url>
-          <line>28</line>
+          <line>30</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/command/user/ChangeInstructorCommand.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

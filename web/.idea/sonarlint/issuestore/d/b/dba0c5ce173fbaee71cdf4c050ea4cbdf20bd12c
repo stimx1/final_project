@@ -1,3 +1,4 @@
 
-asquid:S1155R">Use isEmpty() to check whether the collection is empty or not.(­¢Í’ÿÿÿÿÿ8Äâ°ƒî-
 Jsquid:S1172#",Remove this unused method parameter "login".(‹›¡©8ð“º•ì-
+asquid:S1155R">Use isEmpty() to check whether the collection is empty or not.(­¢Í’ÿÿÿÿÿ8Äâ°ƒî-
+^squid:UselessImportCheck".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8òÚ¼¯î-

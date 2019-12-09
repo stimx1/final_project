@@ -257,3 +257,7 @@ b
 2src/main/java/by/epam/web/content/MessageName.java,5\c\5c8668c64612f578dbe33b648aa25895b70ca497
 U
 %src/main/webapp/css/account-style.css,a\8\a8a6a52d1b00d7f4c93ca10d9366e8349a26a1ea
+c
+3src/main/java/by/epam/web/content/RedirectName.java,b\c\bce9f2e6c5453337666fb51fadcd74c959fa60e9
+m
+=src/main/java/by/epam/web/command/user/UpdateUserCommand.java,6\5\6584f88123e6064a7472f000ab6a88ed919f13b5

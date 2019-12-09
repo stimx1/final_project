@@ -1,5 +1,5 @@
 
 squid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "page".(ßÁýœûÿÿÿÿ8ÇŽŸâì-
-Hsquid:S1068"*Remove this unused "logger" private field.(÷äºª8ÇŽŸâì-
 isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ñ ðá8ÇŽŸâì-
 nsquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(æÅÁþþÿÿÿÿ8ÇŽŸâì-
+Hsquid:S1068"*Remove this unused "logger" private field.(÷äºª8ÇŽŸâì-

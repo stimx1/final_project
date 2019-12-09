@@ -3,6 +3,7 @@ package by.epam.web.command.user;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -21,6 +22,7 @@ public class DeleteAssignedExerciseCommand implements ActionCommand {
         int id = Integer.valueOf(sessionRequestContent.getParameter(AttributeName.EXERCISE_ID));
         try {
             assignedExerciseService.deleteExercise(id);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.ASSIGNED_EXERCISE);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Assigned exercise error",e);

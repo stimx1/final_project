@@ -41,7 +41,7 @@
                     <%--<input type="hidden" name="subscriptionDuration" value="${elem.duration}"/>--%>
                     <%--<a href="#" class="button" onclick="document.getElementById('subscription-form${i}').submit(); return false;">Buy</a>--%>
                 <%--</form>--%>
-                <a href="/controller?command=buy_subscription&subscriptionPrice=${elem.price}&subscriptionId=${elem.id}&subscriptionDuration=${elem.duration}&redirect=/controller?command=get_services">Buy</a>
+                <a href="/controller?command=buy_subscription&subscriptionPrice=${elem.price}&subscriptionId=${elem.id}&subscriptionDuration=${elem.duration}">Buy</a>
             </td>
             <c:if test="${ currentUser.role eq 'ADMIN' }">
                 <td><a href="/controller?command=delete_subscription&subscriptionId=${elem.id}">delete</a></td>
@@ -53,7 +53,6 @@
             <td>?</td>
             <form id="form-2" method="post" action="/controller">
                 <input type="hidden" name="command" value="add_subscription"/>
-                <input type="hidden" name="redirect" value="/controller?command=get_services">
                 <td><input type="text" name="subscriptionName" value=""/></td>
                 <td><input type="text" name="subscriptionPrice" value=""/></td>
                 <td><input type="text" name="subscriptionDuration" value=""/></td>

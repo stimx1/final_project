@@ -3,6 +3,7 @@ package by.epam.web.command.admin;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -20,7 +21,7 @@ public class DeleteSubscriptionCommand implements ActionCommand {
         SubscriptionService subscriptionService = SubscriptionService.getInstance();
         try {
             subscriptionService.deleteSubscription(subscriptionId);
-            sessionRequestContent.setAttribute("redirect","/controller?command=get_services");
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.SERVICES);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Subscription delete error",e);

@@ -3,6 +3,7 @@ package by.epam.web.command.user;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.entity.User;
 import by.epam.web.entity.UserRole;
@@ -30,6 +31,7 @@ public class AssignDietCommand implements ActionCommand {
         }
         try {
             assignedDietService.assignDiet(userId,dietId);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.DIETS);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Diet assign error",e);

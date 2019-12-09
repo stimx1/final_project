@@ -3,6 +3,7 @@ package by.epam.web.command.admin;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -21,6 +22,7 @@ public class AddExerciseCommand implements ActionCommand {
         String description = sessionRequestContent.getParameter(AttributeName.EXERCISE_DESCRIPTION);
         try {
             service.addExercise(name,description);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.EXERCISES);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Exercise add error",e);

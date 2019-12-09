@@ -3,6 +3,7 @@ package by.epam.web.command.user;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.entity.User;
 import by.epam.web.exception.CommandException;
@@ -26,6 +27,7 @@ public class BuySubscriptionCommand implements ActionCommand {
         int duration = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_DURATION));
         try {
             accountService.transaction(userId,subscriptionId,price,duration);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.SERVICES);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Transaction error",e);

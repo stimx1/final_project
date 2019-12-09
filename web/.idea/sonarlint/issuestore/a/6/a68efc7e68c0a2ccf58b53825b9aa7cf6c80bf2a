@@ -1,4 +1,4 @@
 
-[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ü×…î-
-Zsquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8Ü×…î-
-msquid:UselessImportCheck"BRemove this unused import 'by.epam.web.entity.SelectedInstructor'.(–·ßğ8ïõ…î-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ü×…î-
+Zsquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8Ü×…î-
+msquid:UselessImportCheck"BRemove this unused import 'by.epam.web.entity.SelectedInstructor'.(–·ßğ8ïõ…î-

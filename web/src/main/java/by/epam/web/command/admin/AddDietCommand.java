@@ -3,6 +3,7 @@ package by.epam.web.command.admin;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -21,6 +22,7 @@ public class AddDietCommand implements ActionCommand {
         DietService service = DietService.getInstance();
         try {
             service.addDiet(name,description);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.DIETS);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Diet add error",e);

@@ -3,6 +3,7 @@ package by.epam.web.command.admin;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
+import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -21,6 +22,7 @@ public class DeleteInstructorCommand implements ActionCommand {
         InstructorService service = InstructorService.getInstance();
         try {
             service.deleteInstructor(id);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.INSTRUCTORS);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Instructor delete error",e);

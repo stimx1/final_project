@@ -1,0 +1,891 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: role; Type: TYPE; Schema: public; Owner: postgres
+--
+
+CREATE TYPE public.role AS ENUM (
+    'user',
+    'instructor',
+    'admin'
+);
+
+
+ALTER TYPE public.role OWNER TO postgres;
+
+--
+-- Name: add_user(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.add_user() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+	BEGIN
+		INSERT INTO user_balance (user_id,amount) VALUES (NEW.id,0);
+		RETURN NEW;
+	END;
+$$;
+
+
+ALTER FUNCTION public.add_user() OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: assigned_diet; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.assigned_diet (
+    id integer NOT NULL,
+    diet_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.assigned_diet OWNER TO postgres;
+
+--
+-- Name: assigned_diet_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.assigned_diet_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.assigned_diet_id_seq OWNER TO postgres;
+
+--
+-- Name: assigned_diet_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.assigned_diet_id_seq OWNED BY public.assigned_diet.id;
+
+
+--
+-- Name: assigned_exercise; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.assigned_exercise (
+    id integer NOT NULL,
+    ex_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.assigned_exercise OWNER TO postgres;
+
+--
+-- Name: assignet_exercise_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.assignet_exercise_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.assignet_exercise_id_seq OWNER TO postgres;
+
+--
+-- Name: assignet_exercise_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.assignet_exercise_id_seq OWNED BY public.assigned_exercise.id;
+
+
+--
+-- Name: bought_subscription; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bought_subscription (
+    id integer NOT NULL,
+    subscription_id integer NOT NULL,
+    user_id integer NOT NULL,
+    price integer NOT NULL,
+    start_day date NOT NULL,
+    end_day date NOT NULL
+);
+
+
+ALTER TABLE public.bought_subscription OWNER TO postgres;
+
+--
+-- Name: bought_subscription_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bought_subscription_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bought_subscription_id_seq OWNER TO postgres;
+
+--
+-- Name: bought_subscription_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bought_subscription_id_seq OWNED BY public.bought_subscription.id;
+
+
+--
+-- Name: diet; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.diet (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    description text
+);
+
+
+ALTER TABLE public.diet OWNER TO postgres;
+
+--
+-- Name: exercise; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.exercise (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    description text
+);
+
+
+ALTER TABLE public.exercise OWNER TO postgres;
+
+--
+-- Name: exercise_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.exercise_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.exercise_id_seq OWNER TO postgres;
+
+--
+-- Name: exercise_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.exercise_id_seq OWNED BY public.exercise.id;
+
+
+--
+-- Name: instructors; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.instructors (
+    id integer NOT NULL,
+    first_name character varying(50) NOT NULL,
+    last_name character varying(50) NOT NULL,
+    info text NOT NULL
+);
+
+
+ALTER TABLE public.instructors OWNER TO postgres;
+
+--
+-- Name: instructors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.instructors_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.instructors_id_seq OWNER TO postgres;
+
+--
+-- Name: instructors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.instructors_id_seq OWNED BY public.instructors.id;
+
+
+--
+-- Name: lol; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.lol (
+    name character varying,
+    age integer
+);
+
+
+ALTER TABLE public.lol OWNER TO postgres;
+
+--
+-- Name: nutrition_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.nutrition_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.nutrition_id_seq OWNER TO postgres;
+
+--
+-- Name: nutrition_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.nutrition_id_seq OWNED BY public.diet.id;
+
+
+--
+-- Name: selected_instructor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.selected_instructor (
+    id integer NOT NULL,
+    instructor_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.selected_instructor OWNER TO postgres;
+
+--
+-- Name: selected_instructor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.selected_instructor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.selected_instructor_id_seq OWNER TO postgres;
+
+--
+-- Name: selected_instructor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.selected_instructor_id_seq OWNED BY public.selected_instructor.id;
+
+
+--
+-- Name: subscriptions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.subscriptions (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    price integer NOT NULL,
+    duration integer DEFAULT 30 NOT NULL,
+    start_day date,
+    end_day date
+);
+
+
+ALTER TABLE public.subscriptions OWNER TO postgres;
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.subscriptions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.subscriptions_id_seq OWNER TO postgres;
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.subscriptions_id_seq OWNED BY public.subscriptions.id;
+
+
+--
+-- Name: test; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.test (
+    date date,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.test OWNER TO postgres;
+
+--
+-- Name: test_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.test_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.test_id_seq OWNER TO postgres;
+
+--
+-- Name: test_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.test_id_seq OWNED BY public.test.id;
+
+
+--
+-- Name: user_balance; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_balance (
+    user_id integer NOT NULL,
+    amount integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public.user_balance OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    email character varying(100) NOT NULL,
+    password character varying(40) NOT NULL,
+    first_name character varying(50),
+    last_name character varying(50),
+    role public.role DEFAULT 'user'::public.role NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: assigned_diet id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_diet ALTER COLUMN id SET DEFAULT nextval('public.assigned_diet_id_seq'::regclass);
+
+
+--
+-- Name: assigned_exercise id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_exercise ALTER COLUMN id SET DEFAULT nextval('public.assignet_exercise_id_seq'::regclass);
+
+
+--
+-- Name: bought_subscription id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bought_subscription ALTER COLUMN id SET DEFAULT nextval('public.bought_subscription_id_seq'::regclass);
+
+
+--
+-- Name: diet id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.diet ALTER COLUMN id SET DEFAULT nextval('public.nutrition_id_seq'::regclass);
+
+
+--
+-- Name: exercise id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.exercise ALTER COLUMN id SET DEFAULT nextval('public.exercise_id_seq'::regclass);
+
+
+--
+-- Name: instructors id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instructors ALTER COLUMN id SET DEFAULT nextval('public.instructors_id_seq'::regclass);
+
+
+--
+-- Name: selected_instructor id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selected_instructor ALTER COLUMN id SET DEFAULT nextval('public.selected_instructor_id_seq'::regclass);
+
+
+--
+-- Name: subscriptions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.subscriptions ALTER COLUMN id SET DEFAULT nextval('public.subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: test id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.test ALTER COLUMN id SET DEFAULT nextval('public.test_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: assigned_diet; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.assigned_diet (id, diet_id, user_id) FROM stdin;
+8	1	6
+13	1	6
+14	1	6
+15	1	6
+22	1	4
+23	1	4
+25	1	6
+26	1	6
+27	1	6
+28	1	3
+29	1	3
+31	2	3
+32	1	3
+36	3	11
+38	1	3
+\.
+
+
+--
+-- Data for Name: assigned_exercise; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.assigned_exercise (id, ex_id, user_id) FROM stdin;
+1	1	4
+5	1	6
+6	4	6
+7	3	4
+10	1	3
+11	1	11
+\.
+
+
+--
+-- Data for Name: bought_subscription; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.bought_subscription (id, subscription_id, user_id, price, start_day, end_day) FROM stdin;
+3	1	6	50	2019-11-25	2019-12-25
+5	1	1	1	2019-11-11	2019-11-11
+6	3	6	20	2019-12-06	2020-01-05
+7	3	11	20	2019-12-07	2020-01-06
+\.
+
+
+--
+-- Data for Name: diet; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.diet (id, name, description) FROM stdin;
+1	Menu 1	Apples every hour.
+2	Menu 2	Orange every second.
+3	Menu 3	Only meet.
+4	Menu 2	Orange every second.
+22	Menu 4	11
+\.
+
+
+--
+-- Data for Name: exercise; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.exercise (id, name, description) FROM stdin;
+1	Жим лёжа	Жим штанги лёжа на скамье
+3	Жим ногами	В тренажёре
+4	Тяга штанги в наклоне	\N
+7	Приседание со штангой	\N
+\.
+
+
+--
+-- Data for Name: instructors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.instructors (id, first_name, last_name, info) FROM stdin;
+1	Misha	Mawashi	Super trener 36 y.o.
+6	Irina\n	Kravchenko	36 y.o. trener
+8	Normalniy	Muzhchina	nutritionist
+9	John	Snow	North king
+\.
+
+
+--
+-- Data for Name: lol; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.lol (name, age) FROM stdin;
+LOL	13
+\.
+
+
+--
+-- Data for Name: selected_instructor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.selected_instructor (id, instructor_id, user_id) FROM stdin;
+1	1	6
+6	8	11
+\.
+
+
+--
+-- Data for Name: subscriptions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.subscriptions (id, name, price, duration, start_day, end_day) FROM stdin;
+1	Subscription for 30 days	50	30	\N	\N
+3	Subscription for 8 exercises	20	30	\N	\N
+5	Subscription for 12 exercises	30	30	\N	\N
+\.
+
+
+--
+-- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.test (date, id) FROM stdin;
+2019-10-11	1
+2019-11-11	2
+1922-11-11	3
+\.
+
+
+--
+-- Data for Name: user_balance; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_balance (user_id, amount) FROM stdin;
+11	20
+1	300
+6	140
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, email, password, first_name, last_name, role) FROM stdin;
+3	login	login	\N	\N	user
+4	user	12dea96fec20593566ab75692c9949596833adc9	user	user	user
+1	admin@gmail.com	d033e22ae348aeb5660fc2140aec35850c4da997			admin
+6	2@gmail.com	da4b9237bacccdf19c0760cab7aec4a8359010b0	2	2	user
+7	123@a	da39a3ee5e6b4b0d3255bfef95601890afd80709		Ass	user
+8	dasd@a	da39a3ee5e6b4b0d3255bfef95601890afd80709	dddd	Ddd	user
+9	mail@mail.ru	7c4a8d09ca3762af61e59520943dc26494f8941b	Max	Max	user
+10	adam@mail.rus	7c4a8d09ca3762af61e59520943dc26494f8941b	Adam	Sandler	user
+11	new@mail.ru	7c4a8d09ca3762af61e59520943dc26494f8941b	New	New	user
+\.
+
+
+--
+-- Name: assigned_diet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.assigned_diet_id_seq', 38, true);
+
+
+--
+-- Name: assignet_exercise_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.assignet_exercise_id_seq', 12, true);
+
+
+--
+-- Name: bought_subscription_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bought_subscription_id_seq', 7, true);
+
+
+--
+-- Name: exercise_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.exercise_id_seq', 8, true);
+
+
+--
+-- Name: instructors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.instructors_id_seq', 10, true);
+
+
+--
+-- Name: nutrition_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.nutrition_id_seq', 22, true);
+
+
+--
+-- Name: selected_instructor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.selected_instructor_id_seq', 6, true);
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.subscriptions_id_seq', 6, true);
+
+
+--
+-- Name: test_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.test_id_seq', 3, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 11, true);
+
+
+--
+-- Name: assigned_diet assigned_diet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_diet
+    ADD CONSTRAINT assigned_diet_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: assigned_exercise assignet_exercise_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_exercise
+    ADD CONSTRAINT assignet_exercise_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: bought_subscription bought_subscription_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bought_subscription
+    ADD CONSTRAINT bought_subscription_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users email; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT email UNIQUE (email);
+
+
+--
+-- Name: exercise exercise_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.exercise
+    ADD CONSTRAINT exercise_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: instructors instructors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instructors
+    ADD CONSTRAINT instructors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: diet nutrition_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.diet
+    ADD CONSTRAINT nutrition_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: selected_instructor selected_instructor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selected_instructor
+    ADD CONSTRAINT selected_instructor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: subscriptions subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.subscriptions
+    ADD CONSTRAINT subscriptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: test test_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.test
+    ADD CONSTRAINT test_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_balance user_balance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_balance
+    ADD CONSTRAINT user_balance_pkey PRIMARY KEY (user_id);
+
+
+--
+-- Name: selected_instructor user_id_u; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selected_instructor
+    ADD CONSTRAINT user_id_u UNIQUE (user_id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users add_user; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER add_user BEFORE INSERT ON public.users FOR EACH ROW EXECUTE PROCEDURE public.add_user();
+
+
+--
+-- Name: assigned_diet diet_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_diet
+    ADD CONSTRAINT diet_id FOREIGN KEY (diet_id) REFERENCES public.diet(id);
+
+
+--
+-- Name: assigned_exercise ex_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_exercise
+    ADD CONSTRAINT ex_id FOREIGN KEY (ex_id) REFERENCES public.exercise(id);
+
+
+--
+-- Name: selected_instructor insturctor_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selected_instructor
+    ADD CONSTRAINT insturctor_id FOREIGN KEY (instructor_id) REFERENCES public.instructors(id);
+
+
+--
+-- Name: assigned_diet user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_diet
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: assigned_exercise user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.assigned_exercise
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: selected_instructor user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.selected_instructor
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

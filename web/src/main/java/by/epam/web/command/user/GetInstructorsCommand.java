@@ -28,7 +28,7 @@ public class GetInstructorsCommand implements ActionCommand {
         List<Instructor> selectedInstructor = null;
         try {
             instructors = service.findInstructors();
-            selectedInstructor = service.findSelectedInstructor(userId);
+            selectedInstructor = service.findSelectedInstructorByUserId(userId);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Instructors get error", e);

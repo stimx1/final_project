@@ -46,7 +46,7 @@ public class RegistrationValidator {
             map.put(AttributeName.INCORRECT_LAST_NAME, true);
         }
         if(flag) {
-            map.put("flag", flag);
+            map.put(AttributeName.FLAG, flag);
         }
         return map;
     }

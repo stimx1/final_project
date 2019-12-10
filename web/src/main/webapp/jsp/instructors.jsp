@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxxx
@@ -7,6 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${locale}" scope="session"/>
+<fmt:setBundle basename="table" var="val"/>
 <html>
 <head>
     <title>Title</title>
@@ -15,17 +18,16 @@
 <body>
 <c:import url="main.jsp"/>
 <div class="table-wrapper">
-
     <table border="2">
-        <caption><b>Instructors</b></caption>
+        <caption><b><fmt:message key="caption.instructors" bundle="${val}"/></b></caption>
         <tr>
-            <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Info</th>
-            <th>Selected</th>
+            <th><fmt:message key="th.id" bundle="${val}"/></th>
+            <th><fmt:message key="th.firstname" bundle="${val}"/></th>
+            <th><fmt:message key="th.lastname" bundle="${val}"/></th>
+            <th><fmt:message key="th.info" bundle="${val}"/></th>
+            <th><fmt:message key="th.selected" bundle="${val}"/></th>
             <c:if test="${ currentUser.role eq 'ADMIN' }">
-                <td>Action</td>
+                <td><fmt:message key="th.action" bundle="${val}"/></td>
             </c:if>
         </tr>
         <c:forEach var="elem" items="${instructors}">
@@ -47,13 +49,14 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
-                <td><c:if test="${ currentUser.role eq 'ADMIN' }">
-                    <a href="/controller?command=delete_instructor&instructorId=${elem.id}" >delete</a>
-                </c:if></td>
+                <c:if test="${ currentUser.role eq 'ADMIN' }">
+                    <td><a href="/controller?command=delete_instructor&instructorId=${elem.id}" ><fmt:message key="button.delete" bundle="${val}"/></a></td>
+                </c:if>
             </tr>
         </c:forEach>
-        <tr>
-            <c:if test="${ currentUser.role eq 'ADMIN' }">
+
+        <c:if test="${ currentUser.role eq 'ADMIN' }">
+            <tr>
                 <td>?</td>
                 <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_instructor"/>
@@ -61,10 +64,11 @@
                     <td><input type="text" name="last_name" value=""/></td>
                     <td><input type="text" name="info" value=""/></td>
                     <td>&nbsp;</td>
-                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;">Add</a></td>
+                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
                 </form>
-            </c:if>
-        </tr>
+            </tr>
+        </c:if>
+
     </table>
 
 

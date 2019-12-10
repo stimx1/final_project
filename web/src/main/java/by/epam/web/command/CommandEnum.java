@@ -153,6 +153,16 @@ public enum CommandEnum {
         {
             this.command = new GetAssignedExerciseCommand();
         }
+    },
+    COACHING_ROOM{
+        {
+            this.command = new CoachingRoomCommand();
+        }
+    },
+    UPDATE_USER{
+        {
+            this.command = new UpdateUserCommand();
+        }
     };
     ActionCommand command;
     public ActionCommand getCurrentCommand(){

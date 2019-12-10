@@ -31,7 +31,7 @@ public class AssignDietCommand implements ActionCommand {
         }
         try {
             assignedDietService.assignDiet(userId,dietId);
-            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.DIETS);
+            sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.ASSIGNED_DIET);
         } catch (ServiceException e) {
             logger.catching(e);
             throw new CommandException("Diet assign error",e);

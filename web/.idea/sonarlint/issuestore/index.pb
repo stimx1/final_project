@@ -65,8 +65,6 @@ q
 Asrc/main/java/by/epam/web/command/admin/AddInstructorCommand.java,d\3\d33405217161d04ebd43d31f0f734fa08a1f27f5
 t
 Dsrc/main/java/by/epam/web/command/admin/DeleteInstructorCommand.java,5\2\52289969933161663d38a9ac7f65dbc646a268cb
-R
-"src/main/webapp/jsp/assignment.jsp,1\1\118e8ad45c59d6a7f1947674abb13b66bcfeaabf
 Y
 )src/main/webapp/WEB-INF/tld/customtag.tld,7\5\75b337adbd4887582425fd4396d7195fb7a79399
 b
@@ -207,8 +205,6 @@ l
 <src/main/java/by/epam/web/content/SessionRequestContent.java,c\c\cc44595c115512ee1516d12c59223a79ebc4fc36
 
 _src/main/java/by/epam/web/specification/subscription/BoughtSubscriptionUserIdSpecification.java,d\2\d26f8f06aadd0533e1a6e0c7640924392cd756df
-N
-src/main/webapp/jsp/login1.jsp,e\f\eff0e74b2c18b8a28641930025d1c9ff125c3ad2
 x
 Hsrc/main/java/by/epam/web/specification/user/UserEmailSpecification.java,8\9\89c4af85622d21d8af9275657ab8fddbc556a77b
 €
@@ -237,8 +233,6 @@ L
 src/main/webapp/jsp/diet.jsp,c\3\c3c128232c6733aeddf815cc05f87f69403a94aa
 P
  src/main/webapp/jsp/exercise.jsp,1\3\1329594feaf3c08a1758457e7529504599f74dc1
-M
-src/main/webapp/jsp/main1.jsp,c\7\c757d2576819ef7ec1fbd64e9c66a747329133f5
 Y
 )src/main/webapp/jsp/assigned-exercise.jsp,d\3\d3f1f8e40ab144f0045ed7325ce7d41c482adddf
 v
@@ -249,8 +243,6 @@ U
 %src/main/webapp/jsp/assigned-diet.jsp,c\7\c72399d4133b9ee6ff06da3ff401abeaac669ff9
 r
 Bsrc/main/java/by/epam/web/command/user/BuySubscriptionCommand.java,5\a\5af068b7baa46b24b03b22d7ed858ab545cd9353
-N
-src/main/webapp/jsp/login2.jsp,b\e\beb85dfc7f468f2921f5e5226b08d3f7b39916ef
 j
 :src/main/java/by/epam/web/validation/BalanceValidator.java,8\6\8658f3ea744b5ede7fc9864b3fda5e98bcbb586b
 b

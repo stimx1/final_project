@@ -6,7 +6,47 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da10a71-744a-4d45-89db-4b3ef281f4a4" name="Default Changelist" comment="" />
+    <list default="true" id="8da10a71-744a-4d45-89db-4b3ef281f4a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/CoachingRoomCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorSelectedInstructorSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/table.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/table_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/table_ru.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/coaching-room.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/118e8ad45c59d6a7f1947674abb13b66bcfeaabf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/beb85dfc7f468f2921f5e5226b08d3f7b39916ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c757d2576819ef7ec1fbd64e9c66a747329133f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/eff0e74b2c18b8a28641930025d1c9ff125c3ad2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/CommandEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/CommandEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/AssignDietCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/AssignDietCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/GetInstructorsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/GetInstructorsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/UpdateUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/user/UpdateUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/content/AttributeName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/content/AttributeName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/content/PageName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/content/PageName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/InstructorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/InstructorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/validation/RegistrationValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/validation/RegistrationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main_ru.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/assigned-diet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/assigned-diet.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/assigned-exercise.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/assigned-exercise.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/diet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/diet.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/exercise.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/exercise.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/instructors.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/instructors.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/registration.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/services.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/services.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.iml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +82,14 @@
         <option value="Interface" />
         <option value="jsf" />
         <option value="Tag Library Descriptor" />
-        <option value="Jsp File" />
         <option value="CSS File" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -63,17 +106,20 @@
     </option>
   </component>
   <component name="ProjectId" id="1SPwHO36qvNpgCkExZ34lc1pbSb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/jsp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -272,11 +318,23 @@
       <workItem from="1575721441289" duration="19045000" />
       <workItem from="1575799887884" duration="15299000" />
       <workItem from="1575876282972" duration="2577000" />
+      <workItem from="1575968766890" duration="9340000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -300,6 +358,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteDietCommand.java</url>
           <line>30</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/service/UserService.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/service/UserService.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/epam/web/service/UserService.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

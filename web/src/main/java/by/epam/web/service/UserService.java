@@ -81,10 +81,10 @@ public class UserService {
             List<User> userList = repository.query(new UserEmailSpecification(email));
             if (userList.size() > 0) {
                 map.put(AttributeName.REGISTRATION_ERROR, MessageManager.getProperty(MessageName.REGISTRATION_ERROR));
-                map.put("flag",true);
+                map.put(AttributeName.FLAG,true);
                 return map;
             }
-            if (map.containsKey("flag")) {
+            if (map.containsKey(AttributeName.FLAG)) {
                 return map;
             }
             String password = PasswordEncrypter.encrypt(pass);
@@ -101,7 +101,7 @@ public class UserService {
     public Map<String,Object> updateUser(int userId,String email, String pass, String repeatedPass, String firstName, String lastName) throws ServiceException {
         RegistrationValidator validator = new RegistrationValidator();
         Map<String, Object> map = validator.validate(email, pass, repeatedPass,firstName, lastName);
-        if(map.containsKey("flag")){
+        if(map.containsKey(AttributeName.FLAG)){
             return map;
         }
         String password = PasswordEncrypter.encrypt(pass);

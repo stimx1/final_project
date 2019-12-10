@@ -4,6 +4,7 @@ import by.epam.web.entity.Instructor;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.repository.InstructorRepository;
+import by.epam.web.specification.instructor.InstructorSelectedInstructorSpecification;
 import by.epam.web.specification.instructor.InstructorSpecification;
 import by.epam.web.specification.instructor.InstructorUserSpecification;
 import org.apache.logging.log4j.LogManager;
@@ -48,18 +49,26 @@ public class InstructorService {
             return repository.query(new InstructorSpecification());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Instructors not found", e);
+            throw new ServiceException("Find error", e);
         }
     }
 
-    public List<Instructor> findSelectedInstructor(int userId) throws ServiceException {
+    public List<Instructor> findSelectedInstructorByUserId(int userId) throws ServiceException {
         try {
             return repository.query(new InstructorUserSpecification(userId));
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Selected instructors not found", e);
+            throw new ServiceException("Find error", e);
         }
     }
 
+    public List<Instructor> findSelectedInstructor() throws ServiceException {
+        try {
+            return repository.query(new InstructorSelectedInstructorSpecification());
+        } catch (EntityRepositoryException e) {
+            logger.catching(e);
+            throw new ServiceException("Find error", e);
+        }
+    }
 
 }

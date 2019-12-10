@@ -49,15 +49,13 @@ public class UserRepository implements EntityRepository<User> {
     @Override
     public void updateEntity(User user) throws EntityRepositoryException {
         try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER);
-            ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
+            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER);) {
                 statement.setString(1,user.getEmail());
                 statement.setString(2,user.getPass());
                 statement.setString(3,user.getFirstName());
                 statement.setString(4,user.getLastName());
                 statement.setInt(5,user.getId());
-            }
+                statement.execute();
         } catch (SQLException e) {
             logger.throwing(e);
             throw new EntityRepositoryException("Incorrect query",e);

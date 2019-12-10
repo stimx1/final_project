@@ -54,7 +54,5 @@ public class AttributeName {
     public static final String DEPOSIT_BALANCE_ERROR = "errorBalanceMessage";
     public static final String REDIRECT = "redirect";
     public static final String CURRENT_AMOUNT = "currentAmount";
-
-
-
+    public static final String FLAG = "flag";
 }

@@ -38,6 +38,7 @@
                         <li><a href="/controller?command=get_diets"><fmt:message key="submenu.diets" bundle="${val}"/></a></li>
                         <li><a href="/controller?command=get_exercises"><fmt:message key="submenu.exercises" bundle="${val}"/></a></li>
                         <li><a href="/controller?command=get_users"><fmt:message key="submenu.users" bundle="${val}"/></a></li>
+                        <li><a href="/controller?command=coaching_room"><fmt:message key="submenu.coaching" bundle="${val}"/></a></li>
                     </ul>
                 </li>
             </c:if>

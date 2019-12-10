@@ -23,20 +23,24 @@ public class UpdateUserCommand implements ActionCommand {
         String page = ConfigurationManager.getProperty(PageName.ACCOUNT);
         String pass = sessionRequestContent.getParameter(AttributeName.PASSWORD);
         String repeatPass = sessionRequestContent.getParameter(AttributeName.REPEATED_PASSWORD);
-        String email = sessionRequestContent.getParameter(AttributeName.EMAIL);
         String lastName = sessionRequestContent.getParameter(AttributeName.LAST_NAME);
         String firstName = sessionRequestContent.getParameter(AttributeName.FIRST_NAME);
         User user = (User)sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER);
         UserService userService = UserService.getINSTANCE();
+        logger.info(user.getEmail());
         try {
-            Map<String,Object> map =userService.updateUser(user.getId(),email,pass,repeatPass,firstName,lastName);
-            if(map.containsKey("flag")){
+            Map<String,Object> map = userService.updateUser(user.getId(),user.getEmail(),pass,repeatPass,firstName,lastName);
+            if(map.containsKey(AttributeName.FLAG)){
                 sessionRequestContent.setAttribute(map);
             }else {
+                user.setLastName(lastName);
+                user.setFirstName(firstName);
+                sessionRequestContent.setSessionAttribute(AttributeName.CURRENT_USER,user);
                 sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.ACCOUNT);
             }
         } catch (ServiceException e) {
-            e.printStackTrace();
+            logger.catching(e);
+            throw new CommandException("Update error",e);
         }
         return page;
     }

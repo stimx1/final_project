@@ -11,12 +11,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="account" var="val"/>
+<fmt:setBundle basename="table" var="value"/>
 <head>
     <title>User account</title>
     <link href="../css/account-style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <c:import url="main.jsp"/>
+<fmt:bundle basename="account">
 <div class="main-wrapper">
     <div class="two-form-wrapper">
         <div class="form-wrapper">
@@ -24,23 +26,23 @@
                 <label class="caption"><fmt:message key="label.title" bundle="${val}"/></label>
                 <div class="field">
                     <label><fmt:message key="label.firstName" bundle="${val}"/>:</label>
-                    <input type="text" name="firstName" value="${currentUser.firstName}"/>
+                    <input type="text" name="firstName" value="${currentUser.firstName}"/><c:if
+                        test="${ incorrectFirstName eq true}">Incorrect pass</c:if>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.lastName" bundle="${val}"/>:</label>
-                    <input type="text" name="lastName" value="${currentUser.lastName}"/>
-                </div>
-                <div class="field">
-                    <label><fmt:message key="label.email" bundle="${val}"/>: </label>
-                    <input type="email" name="email" value="${currentUser.email}"/>
+                    <input type="text" name="lastName" value="${currentUser.lastName}"/><c:if
+                        test="${ incorrectLastName eq true}">Incorrect pass</c:if>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.password" bundle="${val}"/>: </label>
-                    <input type="password" name="password" value=""/>
+                    <input type="password" name="password" value=""/><c:if
+                        test="${ incorrectPassword eq true}">Incorrect pass</c:if>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.repeatPassword" bundle="${val}"/>: </label>
-                    <input type="password" name="repeatedPassword" value=""/>
+                    <input type="password" name="repeatedPassword" value=""/><c:if
+                        test="${ incorrectRepeatedPassword eq true}">Incorrect pass</c:if>
                 </div>
                 <input type="hidden" name="command" value="update_user"/>
                 <a href="#" class="button"
@@ -64,16 +66,18 @@
             </form>
         </div>
     </div>
+    </fmt:bundle>
     <div class="table-wrapper">
         <div class="wrapper">
             <c:if test="${ fn:length(subscriptions)> 0}">
+                <fmt:bundle basename="table">
                 <table border="2">
-                    <caption><b>Subscription</b></caption>
+                    <caption><b><fmt:message key="caption.subscriptions" bundle="${value}"/></b></caption>
                     <tr>
-                        <th>ID</th>
-                        <th>Subscription name</th>
-                        <th>Start day</th>
-                        <th>End day</th>
+                        <th><fmt:message key="th.id" bundle="${value}"/></th>
+                        <th><fmt:message key="th.name" bundle="${value}"/></th>
+                        <th><fmt:message key="th.start" bundle="${value}"/></th>
+                        <th><fmt:message key="th.end" bundle="${value}"/></th>
                     </tr>
                     <c:forEach var="elem" items="${subscriptions}" varStatus="i">
                         <tr>
@@ -84,6 +88,7 @@
                         </tr>
                     </c:forEach>
                 </table>
+            </fmt:bundle>
             </c:if>
         </div>
     </div>

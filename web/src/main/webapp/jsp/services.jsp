@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxxx
@@ -7,6 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${locale}" scope="session"/>
+<fmt:setBundle basename="table" var="val"/>
 <html>
 <head>
     <title>Services</title>
@@ -16,15 +19,15 @@
 <c:import url="main.jsp"/>
 <div class="table-wrapper">
 <table border="2">
-    <caption><b>Services</b></caption>
+    <caption><b><fmt:message key="caption.services" bundle="${val}"/></b></caption>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Duration</th>
-        <th>Action</th>
+        <th><fmt:message key="th.id" bundle="${val}"/></th>
+        <th><fmt:message key="th.name" bundle="${val}"/></th>
+        <th><fmt:message key="th.price" bundle="${val}"/></th>
+        <th><fmt:message key="th.duration" bundle="${val}"/></th>
+        <th><fmt:message key="th.action" bundle="${val}"/></th>
         <c:if test="${ currentUser.role eq 'ADMIN' }">
-            <th>Admin action</th>
+            <th><fmt:message key="th.admin" bundle="${val}"/></th>
         </c:if>
     </tr>
     <c:forEach var="elem" items="${subscriptions}" >
@@ -34,17 +37,10 @@
             <td>${elem.price}</td>
             <td>${elem.duration}</td>
             <td>
-                <%--<form action="/controller" id="subscription-form${i}" method="post">--%>
-                    <%--<input type="hidden" name="command" value="buy_subscription"/>--%>
-                    <%--<input type="hidden" name="subscriptionPrice" value="${elem.price}"/>--%>
-                    <%--<input type="hidden" name="subscriptionId" value="${elem.id}"/>--%>
-                    <%--<input type="hidden" name="subscriptionDuration" value="${elem.duration}"/>--%>
-                    <%--<a href="#" class="button" onclick="document.getElementById('subscription-form${i}').submit(); return false;">Buy</a>--%>
-                <%--</form>--%>
-                <a href="/controller?command=buy_subscription&subscriptionPrice=${elem.price}&subscriptionId=${elem.id}&subscriptionDuration=${elem.duration}">Buy</a>
+                <a href="/controller?command=buy_subscription&subscriptionPrice=${elem.price}&subscriptionId=${elem.id}&subscriptionDuration=${elem.duration}"><fmt:message key="button.buy" bundle="${val}"/></a>
             </td>
             <c:if test="${ currentUser.role eq 'ADMIN' }">
-                <td><a href="/controller?command=delete_subscription&subscriptionId=${elem.id}">delete</a></td>
+                <td><a href="/controller?command=delete_subscription&subscriptionId=${elem.id}"><fmt:message key="button.delete" bundle="${val}"/></a></td>
             </c:if>
         </tr>
     </c:forEach>
@@ -56,7 +52,7 @@
                 <td><input type="text" name="subscriptionName" value=""/></td>
                 <td><input type="text" name="subscriptionPrice" value=""/></td>
                 <td><input type="text" name="subscriptionDuration" value=""/></td>
-                <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;">Add</a></td>
+                <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
                 <td>&nbsp;</td>
             </form>
         </tr>

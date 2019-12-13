@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class ExerciseSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(ExerciseSpecification.class);
-    private static final String SQL_SELECT_EX = "SELECT id, name, description FROM exercise;";
+    private static final String SQL_SELECT_EX = "SELECT id, name, description,state FROM exercise;";
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;

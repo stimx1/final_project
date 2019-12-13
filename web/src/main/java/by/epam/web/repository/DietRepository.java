@@ -3,6 +3,7 @@ package by.epam.web.repository;
 import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.content.ColumnName;
 import by.epam.web.entity.Diet;
+import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.specification.EntitySpecification;
 import org.apache.logging.log4j.LogManager;
@@ -17,8 +18,9 @@ import java.util.List;
 
 public class DietRepository implements EntityRepository<Diet> {
     private static final Logger logger = LogManager.getLogger(DietRepository.class);
-    private static final String SQL_INSERT_DIET = "INSERT INTO diet (name, description) VALUES (?, ?);";
+    private static final String SQL_INSERT_DIET = "INSERT INTO diet (name, description,state) VALUES (?, ?,?);";
     private static final String SQL_DELETE_DIET = "DELETE FROM diet WHERE id = ? ;";
+    private static final String SQL_UPDATE_DIET = "UPDATE diet SET name = ?, description = ?, state = CAST (? AS status) WHERE id = ? ;";
 
     @Override
     public void addEntity(Diet diet) throws EntityRepositoryException {
@@ -26,6 +28,7 @@ public class DietRepository implements EntityRepository<Diet> {
              PreparedStatement statement = connection.prepareStatement(SQL_INSERT_DIET)) {
             statement.setString(1, diet.getName());
             statement.setString(2, diet.getDescription());
+            statement.setString(3,diet.getState().toString().toLowerCase());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
@@ -46,7 +49,18 @@ public class DietRepository implements EntityRepository<Diet> {
     }
 
     @Override
-    public void updateEntity(Diet diet) {
+    public void updateEntity(Diet diet) throws EntityRepositoryException {
+        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_DIET)){
+            statement.setString(1,diet.getName());
+            statement.setString(2,diet.getDescription());
+            statement.setString(3, diet.getState().toString().toLowerCase());
+            statement.setInt(4,diet.getId());
+            statement.execute();
+        }catch (SQLException e){
+            logger.catching(e);
+            throw new EntityRepositoryException("Update error",e);
+        }
     }
 
     @Override
@@ -59,6 +73,7 @@ public class DietRepository implements EntityRepository<Diet> {
                 diet.setId(resultSet.getInt(ColumnName.ID));
                 diet.setName(resultSet.getString(ColumnName.NAME));
                 diet.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
+                diet.setState(State.valueOf(resultSet.getString(ColumnName.STATE).toUpperCase()));
                 dietList.add(diet);
             }
         } catch (SQLException e) {

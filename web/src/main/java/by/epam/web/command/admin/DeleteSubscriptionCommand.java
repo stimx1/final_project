@@ -18,9 +18,12 @@ public class DeleteSubscriptionCommand implements ActionCommand {
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.SERVICES);
         int subscriptionId = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_ID));
+        String name = sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_NAME);
+        int price = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_PRICE));
+        int duration = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_DURATION));
         SubscriptionService subscriptionService = SubscriptionService.getInstance();
         try {
-            subscriptionService.deleteSubscription(subscriptionId);
+            subscriptionService.deleteSubscription(subscriptionId,name,price,duration);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.SERVICES);
         } catch (ServiceException e) {
             logger.catching(e);

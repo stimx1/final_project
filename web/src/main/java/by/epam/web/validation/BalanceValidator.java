@@ -9,4 +9,6 @@ public class BalanceValidator {
     public static boolean validateDeposit(UserBalance userBalance, int amount){
         return userBalance.getAmount()+amount <= 1000;
     }
+
 }
+

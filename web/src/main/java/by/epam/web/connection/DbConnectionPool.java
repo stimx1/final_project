@@ -19,6 +19,9 @@ public enum DbConnectionPool {
     INSTANCE;
 
     private final Logger logger = LogManager.getLogger(DbConnectionPool.class);
+    private static final String HOST = "db.host";
+    private static final String LOGIN = "db.login";
+    private static final String PASSWORD = "db.password";
     private BlockingQueue<Connection> freeConnections;
     private Queue<Connection> givenAwayConnections;
 
@@ -26,15 +29,15 @@ public enum DbConnectionPool {
 
     DbConnectionPool(){
         try {
-            String URL = DBConfigurationManger.getProperty("db.host");
-            String USER = DBConfigurationManger.getProperty("db.login");
-            String PASS = DBConfigurationManger.getProperty("db.password");
+            String url = DBConfigurationManger.getProperty(HOST);
+            String user = DBConfigurationManger.getProperty(LOGIN);
+            String pass = DBConfigurationManger.getProperty(PASSWORD);
             DriverManager.registerDriver(new org.postgresql.Driver());
             freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
             givenAwayConnections = new ArrayDeque<>();
             Connection connection;
             for(int i =0; i < DEFAULT_POOL_SIZE; i++){
-                connection = new ProxyConnection(DriverManager.getConnection(URL,USER,PASS));
+                connection = new ProxyConnection(DriverManager.getConnection(url,user,pass));
                 freeConnections.offer(connection);
             }
         } catch (SQLException e) {
@@ -48,7 +51,7 @@ public enum DbConnectionPool {
             connection = freeConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.catching(e);
         }
         return connection;
     }

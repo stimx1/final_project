@@ -1,6 +1,7 @@
 package by.epam.web.service;
 
 import by.epam.web.entity.Diet;
+import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.repository.DietRepository;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DietService {
     private static final Logger logger = LogManager.getLogger(DietService.class);
@@ -31,11 +33,10 @@ public class DietService {
         }
     }
 
-    public void deleteDiet(int id) throws ServiceException {
-        Diet diet = new Diet();
-        diet.setId(id);
+    public void deleteDiet(int id,String name,String description) throws ServiceException {
+        Diet diet = new Diet(id, State.BLOCKED,name,description);
         try {
-            repository.removeEntity(diet);
+            repository.updateEntity(diet);
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Diet service remove error",e);
@@ -44,16 +45,20 @@ public class DietService {
 
     public List<Diet> findDiets() throws ServiceException {
         try {
-            return repository.query(new DietSpecification());
+            return repository.query(new DietSpecification()).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Diet not found",e);
+            throw new ServiceException("Diet find error",e);
         }
     }
 
     public List<Diet> findAssignedDiets(int id) throws ServiceException {
         try {
-            return repository.query(new DietUserSpecification(id));
+            return repository.query(new DietUserSpecification(id)).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Assigned diets not found",e);

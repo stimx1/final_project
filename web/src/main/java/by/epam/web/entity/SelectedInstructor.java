@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class SelectedInstructor extends Entity {
-    private int id;
     private int userId;
     private int instructorId;
 
@@ -12,18 +11,6 @@ public class SelectedInstructor extends Entity {
         this.instructorId = instructorId;
     }
 
-    public SelectedInstructor(int id, int userId, int instructorId) {
-        this(userId,instructorId);
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getUserId() {
         return userId;

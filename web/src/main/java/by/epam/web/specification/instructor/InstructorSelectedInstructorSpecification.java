@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class InstructorSelectedInstructorSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(InstructorSelectedInstructorSpecification.class);
-    private static final String SQL_SELECT_INSTRUCTORS = "SELECT I.first_name, I.last_name, I.INFO, U.id FROM instructors AS I " +
+    private static final String SQL_SELECT_INSTRUCTORS = "SELECT I.first_name, I.last_name, I.info, U.id,I.state FROM instructors AS I " +
             "FULL JOIN selected_instructor AS SI ON I.id = SI.instructor_id LEFT JOIN users AS U ON U.id = SI.user_id;";
     @Override
     public PreparedStatement specified() {

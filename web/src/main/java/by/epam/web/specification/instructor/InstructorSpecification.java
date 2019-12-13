@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class InstructorSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(InstructorSpecification.class);
-    private static final String SQL_SELECT_INSTRUCTOR = "SELECT  last_name, first_name, id, info FROM instructors;";
+    private static final String SQL_SELECT_INSTRUCTOR = "SELECT  last_name, first_name, id, info,state FROM instructors;";
 
     @Override
     public PreparedStatement specified() {

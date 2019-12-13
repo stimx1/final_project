@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class Instructor extends Entity {
-    private int id;
     private String firstName;
     private String lastName;
     private String info;
@@ -12,15 +11,14 @@ public class Instructor extends Entity {
         this.info = info;
     }
 
+    public Instructor(int id, State state, String firstName, String lastName, String info) {
+        super(id, state);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.info = info;
+    }
+
     public Instructor(){}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

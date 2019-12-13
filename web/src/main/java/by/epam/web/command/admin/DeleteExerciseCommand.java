@@ -20,8 +20,10 @@ public class DeleteExerciseCommand implements ActionCommand {
         String page = ConfigurationManager.getProperty(PageName.EXERCISE);
         ExerciseService service = ExerciseService.getInstance();
         int id = Integer.valueOf(sessionRequestContent.getParameter(AttributeName.EXERCISE_ID));
+        String name = sessionRequestContent.getParameter(AttributeName.EXERCISE_NAME);
+        String description = sessionRequestContent.getParameter(AttributeName.EXERCISE_DESCRIPTION);
         try {
-            service.deleteExercise(id);
+            service.deleteExercise(id,name,description);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.EXERCISES);
         } catch (ServiceException e) {
             logger.catching(e);

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class SubscriptionSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(SubscriptionSpecification.class);
-    private static final String SQL_SELECT_SUBSCRIPTION = "SELECT id, name, price, duration,start_day,end_day FROM subscriptions;";
+    private static final String SQL_SELECT_SUBSCRIPTION = "SELECT id, name, price, duration,start_day,end_day,state FROM subscriptions;";
 
     @Override
     public PreparedStatement specified() {

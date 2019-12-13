@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class Diet extends Entity {
-    private int id;
     private String name;
     private String description;
 
@@ -13,8 +12,10 @@ public class Diet extends Entity {
     public Diet(){
     }
 
-    public int getId() {
-        return id;
+    public Diet(int id, State state, String name, String description) {
+        super(id, state);
+        this.name = name;
+        this.description = description;
     }
 
     public String getName() {
@@ -25,9 +26,6 @@ public class Diet extends Entity {
         return description;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;

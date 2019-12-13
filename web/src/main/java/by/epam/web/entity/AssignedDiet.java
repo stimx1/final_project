@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class AssignedDiet extends Entity {
-    private int id;
     private int userId;
     private int dietId;
 
@@ -10,14 +9,6 @@ public class AssignedDiet extends Entity {
     public AssignedDiet(int userId, int dietId) {
         this.userId = userId;
         this.dietId = dietId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUserId() {

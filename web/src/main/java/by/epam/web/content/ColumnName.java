@@ -17,5 +17,6 @@ public class ColumnName {
     public static final String AMOUNT= "amount";
     public static final String USER_ID = "user_id";
     public static final String INSTRUCTOR_ID = "instructor_id";
+    public static final String STATE = "state";
 
 }

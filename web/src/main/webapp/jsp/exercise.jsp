@@ -26,17 +26,17 @@
             <th><fmt:message key="th.description" bundle="${val}"/></th>
             <th><fmt:message key="th.action" bundle="${val}"/></th>
         </tr>
-        <c:forEach var="elem" items="${exerciseList}" varStatus="i">
+        <c:forEach var="elem" items="${exerciseList}">
             <tr>
                 <td>${elem.id}</td>
                 <td>${elem.name}</td>
                 <td>${elem.description}</td>
-                <td><a href="/controller?command=delete_exercise&exerciseId=${elem.id}" class="button"><fmt:message key="button.delete" bundle="${val}"/></a></td>
+                <td><a href="/controller?command=delete_exercise&exerciseId=${elem.id}&exerciseName=${elem.name}&exerciseDescription=${elem.description}" class="button"><fmt:message key="button.delete" bundle="${val}"/></a></td>
             </tr>
         </c:forEach>
         <tr>
             <td>?</td>
-            <form id="form-2">
+            <form id="form-2" action="/controller" method="post">
                 <input type="hidden" name="command" value="add_exercise"/>
                 <td><input type="text" name="exerciseName" value=""/></td>
                 <td><input type="text" name="exerciseDescription" value=""/></td>

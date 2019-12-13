@@ -40,7 +40,7 @@
                 <a href="/controller?command=buy_subscription&subscriptionPrice=${elem.price}&subscriptionId=${elem.id}&subscriptionDuration=${elem.duration}"><fmt:message key="button.buy" bundle="${val}"/></a>
             </td>
             <c:if test="${ currentUser.role eq 'ADMIN' }">
-                <td><a href="/controller?command=delete_subscription&subscriptionId=${elem.id}"><fmt:message key="button.delete" bundle="${val}"/></a></td>
+                <td><a href="/controller?command=delete_subscription&subscriptionId=${elem.id}&subscriptionName=${elem.name}&subscriptionPrice=${elem.price}&subscriptionDuration=${elem.duration}"><fmt:message key="button.delete" bundle="${val}"/></a></td>
             </c:if>
         </tr>
     </c:forEach>

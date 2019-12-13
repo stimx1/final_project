@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class AssignedExercise extends Entity {
-    private int id;
     private int userId;
     private int exerciseId;
 
@@ -10,14 +9,6 @@ public class AssignedExercise extends Entity {
     public AssignedExercise(int userId, int exerciseId) {
         this.userId = userId;
         this.exerciseId = exerciseId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUserId() {

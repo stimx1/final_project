@@ -1,7 +1,6 @@
 package by.epam.web.entity;
 
 public class Exercise extends Entity {
-    private int id;
     private String name;
     private String description;
 
@@ -13,8 +12,10 @@ public class Exercise extends Entity {
     public Exercise(){
     }
 
-    public int getId() {
-        return id;
+    public Exercise(int id, State state, String name, String description) {
+        super(id, state);
+        this.name = name;
+        this.description = description;
     }
 
     public String getName() {
@@ -23,10 +24,6 @@ public class Exercise extends Entity {
 
     public String getDescription() {
         return description;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {

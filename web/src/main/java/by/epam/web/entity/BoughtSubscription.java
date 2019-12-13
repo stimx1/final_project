@@ -3,7 +3,6 @@ package by.epam.web.entity;
 import java.time.LocalDate;
 
 public class BoughtSubscription extends Entity{
-    private int id;
     private int subscriptionId;
     private int userId;
     private int price;
@@ -19,14 +18,6 @@ public class BoughtSubscription extends Entity{
         this.price = price;
         this.startDay = startDay;
         this.endDay = endDay;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getSubscriptionId() {

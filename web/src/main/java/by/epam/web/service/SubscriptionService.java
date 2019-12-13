@@ -1,5 +1,6 @@
 package by.epam.web.service;
 
+import by.epam.web.entity.State;
 import by.epam.web.entity.Subscription;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.exception.ServiceException;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SubscriptionService {
     private static final Logger logger = LogManager.getLogger(SubscriptionService.class);
@@ -32,11 +34,10 @@ public class SubscriptionService {
         }
     }
 
-    public void deleteSubscription(int id) throws ServiceException {
-        Subscription subscription = new Subscription();
-        subscription.setId(id);
+    public void deleteSubscription(int id,String name, int price,int duration) throws ServiceException {
+        Subscription subscription = new Subscription(id, State.BLOCKED,name,price,duration);
         try {
-            repository.removeEntity(subscription);
+            repository.updateEntity(subscription);
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Subscription remove error",e);
@@ -45,7 +46,9 @@ public class SubscriptionService {
 
     public List<Subscription> findSubscription() throws ServiceException {
         try {
-            return repository.query(new SubscriptionSpecification());
+            return repository.query(new SubscriptionSpecification()).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Subscription find error",e);
@@ -55,7 +58,9 @@ public class SubscriptionService {
     public List<Subscription> findBoughtSubscriptionByUserId(int userId) throws ServiceException {
         try {
             logger.info("tut");
-            return repository.query(new SubscriptionUserIdSpecification(userId));
+            return repository.query(new SubscriptionUserIdSpecification(userId)).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e){
             logger.catching(e);
             throw new ServiceException("Subscription find error",e);

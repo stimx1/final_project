@@ -3,6 +3,7 @@ package by.epam.web.repository;
 import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.content.ColumnName;
 import by.epam.web.entity.Instructor;
+import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.specification.EntitySpecification;
 import org.apache.logging.log4j.LogManager;
@@ -14,8 +15,9 @@ import java.util.List;
 
 public class InstructorRepository implements EntityRepository<Instructor> {
     private static final Logger logger = LogManager.getLogger(InstructorRepository.class);
-    private static final String SQL_INSERT_INSTRUCTOR = "INSERT INTO instructors (first_name,last_name,info) VALUES (?,?,?);";
+    private static final String SQL_INSERT_INSTRUCTOR = "INSERT INTO instructors (first_name,last_name,info,state) VALUES (?,?,?,?);";
     private static final String SQL_DELETE_INSTRUCTOR = "DELETE FROM instructors WHERE id = ? ;";
+    private static final String SQL_UPDATE_INSTRUCTOR = "UPDATE instructors SET first_name = ?, last_name = ?, info = ?, state = CAST (? AS status) WHERE id = ? ;";
 
     @Override
     public void addEntity(Instructor instructor) throws EntityRepositoryException {
@@ -24,6 +26,7 @@ public class InstructorRepository implements EntityRepository<Instructor> {
             statement.setString(1,instructor.getFirstName());
             statement.setString(2,instructor.getLastName());
             statement.setString(3,instructor.getInfo());
+            statement.setString(4,instructor.getState().toString().toLowerCase());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
@@ -44,7 +47,19 @@ public class InstructorRepository implements EntityRepository<Instructor> {
     }
 
     @Override
-    public void updateEntity(Instructor instructor) {
+    public void updateEntity(Instructor instructor) throws EntityRepositoryException {
+        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
+            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_INSTRUCTOR)){
+            statement.setString(1,instructor.getFirstName());
+            statement.setString(2,instructor.getLastName());
+            statement.setString(3,instructor.getInfo());
+            statement.setString(4, instructor.getState().toString().toLowerCase());
+            statement.setInt(5,instructor.getId());
+            statement.execute();
+        }catch (SQLException e){
+            logger.catching(e);
+            throw new EntityRepositoryException("Update error",e);
+        }
     }
 
     @Override
@@ -58,6 +73,7 @@ public class InstructorRepository implements EntityRepository<Instructor> {
                 instructor.setFirstName(resultSet.getString(ColumnName.FIRST_NAME));
                 instructor.setLastName(resultSet.getString(ColumnName.LAST_NAME));
                 instructor.setInfo(resultSet.getString(ColumnName.INFO));
+                instructor.setState(State.valueOf(resultSet.getString(ColumnName.STATE).toUpperCase()));
                 instructors.add(instructor);
             }
         } catch (SQLException e) {

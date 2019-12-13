@@ -26,21 +26,21 @@
                 <th><fmt:message key="th.description" bundle="${val}"/></th>
                 <th><fmt:message key="th.action" bundle="${val}"/></th>
             </tr>
-            <c:forEach var="elem" items="${dietList}" varStatus="i">
+            <c:forEach var="elem" items="${dietList}">
                 <tr>
                     <td>${elem.id}</td>
                     <td>${elem.name}</td>
                     <td>${elem.description}</td>
-                    <td><a href="/controller?command=delete_diet&dietId=${elem.id}" class="button"><fmt:message key="button.delete" bundle="${val}"/></a></td>
+                    <td><a href="/controller?command=delete_diet&dietId=${elem.id}&dietName=${elem.name}&dietDescription=${elem.description}" class="button"><fmt:message key="button.delete" bundle="${val}"/></a></td>
                 </tr>
             </c:forEach>
             <tr>
                 <td>?</td>
-                <form id="form-2">
+                <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_diet"/>
                     <td><input type="text" name="dietName" value=""/></td>
                     <td><input type="text" name="dietDescription" value=""/></td>
-                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/>/a></td>
+                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
                 </form>
             </tr>
         </table>

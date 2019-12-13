@@ -18,9 +18,11 @@ public class DeleteDietCommand implements ActionCommand {
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         int id = Integer.valueOf(sessionRequestContent.getParameter(AttributeName.DIET_ID));
+        String name = sessionRequestContent.getParameter(AttributeName.DIET_NAME);
+        String description = sessionRequestContent.getParameter(AttributeName.DIET_DESCRIPTION);
         DietService service = DietService.getInstance();
         try {
-            service.deleteDiet(id);
+            service.deleteDiet(id,name,description);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.DIETS);
         } catch (ServiceException e) {
             logger.catching(e);

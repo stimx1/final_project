@@ -50,7 +50,7 @@
                     </c:choose>
                 </td>
                 <c:if test="${ currentUser.role eq 'ADMIN' }">
-                    <td><a href="/controller?command=delete_instructor&instructorId=${elem.id}" ><fmt:message key="button.delete" bundle="${val}"/></a></td>
+                    <td><a href="/controller?command=delete_instructor&instructorId=${elem.id}&firstName=${elem.firstName}&lastName=${elem.lastName}&info=${elem.info}" ><fmt:message key="button.delete" bundle="${val}"/></a></td>
                 </c:if>
             </tr>
         </c:forEach>

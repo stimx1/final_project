@@ -5,6 +5,7 @@ import by.epam.web.content.AttributeName;
 import by.epam.web.content.PageName;
 import by.epam.web.content.RedirectName;
 import by.epam.web.content.SessionRequestContent;
+import by.epam.web.entity.Instructor;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
@@ -19,9 +20,12 @@ public class DeleteInstructorCommand implements ActionCommand {
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.INSTRUCTORS);
         int id = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.INSTRUCTOR_ID));
+        String firstName = sessionRequestContent.getParameter(AttributeName.FIRST_NAME);
+        String lastName = sessionRequestContent.getParameter(AttributeName.LAST_NAME);
+        String info = sessionRequestContent.getParameter(AttributeName.INFO);
         InstructorService service = InstructorService.getInstance();
         try {
-            service.deleteInstructor(id);
+            service.deleteInstructor(id,firstName,lastName,info);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.INSTRUCTORS);
         } catch (ServiceException e) {
             logger.catching(e);

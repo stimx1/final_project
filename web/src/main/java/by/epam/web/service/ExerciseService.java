@@ -1,6 +1,7 @@
 package by.epam.web.service;
 
 import by.epam.web.entity.Exercise;
+import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.repository.ExerciseRepository;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExerciseService {
     private static final Logger logger = LogManager.getLogger(ExerciseService.class);
@@ -31,11 +33,10 @@ public class ExerciseService {
         }
     }
 
-    public void deleteExercise(int id) throws ServiceException {
-        Exercise exercise = new Exercise();
-        exercise.setId(id);
+    public void deleteExercise(int id,String name,String description) throws ServiceException {
+        Exercise exercise = new Exercise(id, State.BLOCKED,name,description);
         try {
-            repository.removeEntity(exercise);
+            repository.updateEntity(exercise);
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("ExerciseService delete error",e);
@@ -44,17 +45,21 @@ public class ExerciseService {
 
     public List<Exercise> findExercises() throws ServiceException {
         try {
-            return repository.query(new ExerciseSpecification());
+            return repository.query(new ExerciseSpecification()).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw  new ServiceException("Exercises not found",e);
+            throw  new ServiceException("Exercises find error",e);
         }
     }
 
 
     public List<Exercise> findAssignedExercisesByUserId(int userId) throws ServiceException {
         try {
-            return repository.query(new ExerciseUserSpecification(userId));
+            return repository.query(new ExerciseUserSpecification(userId)).stream()
+                    .filter(o-> o.getState() == State.UNBLOCKED)
+                    .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Assigned exercises not found",e);

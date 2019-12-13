@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class ExerciseUserSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(ExerciseUserSpecification.class);
-    private static final String SQL_SELECT_DIET = "SELECT assigned_exercise.id ,exercise.name, exercise.description FROM users " +
+    private static final String SQL_SELECT_DIET = "SELECT assigned_exercise.id ,exercise.name, exercise.description,exercise.state FROM users " +
             "RIGHT JOIN assigned_exercise ON users.id=assigned_exercise.user_id " +
             "LEFT JOIN exercise ON exercise.id=assigned_exercise.ex_id WHERE users.id = ?;";
     private int id;

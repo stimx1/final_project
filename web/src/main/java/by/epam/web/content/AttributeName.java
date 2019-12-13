@@ -27,7 +27,7 @@ public class AttributeName {
     public static final String EXERCISE_NAME = "exerciseName";
     public static final String EXERCISE_DESCRIPTION = "exerciseDescription";
     public static final String INFO = "info";
-    public static final String NAME = "name";
+    public static final String INSTRUCTOR_NAME = "instructorName";
     public static final String PRICE = "price";
     public static final String USER_LIST = "userList";
     public static final String ID = "id";

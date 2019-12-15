@@ -7,68 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da10a71-744a-4d45-89db-4b3ef281f4a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/epam/web/repository/UserRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/DBconfig.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/04558461dd315defa1748b4f807db86150790453" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/04558461dd315defa1748b4f807db86150790453" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0efa69b60beec5a61371b39e54d0c644575ae200" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0efa69b60beec5a61371b39e54d0c644575ae200" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/1329594feaf3c08a1758457e7529504599f74dc1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/1329594feaf3c08a1758457e7529504599f74dc1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/2409a734a9f30e21e21261f7feed8955d30cd3bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/2409a734a9f30e21e21261f7feed8955d30cd3bc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d9ed62c046da892a3c1b84ce7ca2a9bbaa0ee6d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d9ed62c046da892a3c1b84ce7ca2a9bbaa0ee6d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a341a8701ff9524301bde516e428c6580d57440" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a341a8701ff9524301bde516e428c6580d57440" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c69528937807067c82cf3f6911e3a283286d0a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5c69528937807067c82cf3f6911e3a283286d0a5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/52289969933161663d38a9ac7f65dbc646a268cb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/52289969933161663d38a9ac7f65dbc646a268cb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f997eca3632910977aed3630de8e792e3120b61" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f997eca3632910977aed3630de8e792e3120b61" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/6135ac8711007f5bc0566e5bfc991053c8c9b87b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/6584f88123e6064a7472f000ab6a88ed919f13b5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/6584f88123e6064a7472f000ab6a88ed919f13b5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/70b8b3a514fc74e749177dde307f3e60fb0b7db7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/70b8b3a514fc74e749177dde307f3e60fb0b7db7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8658f3ea744b5ede7fc9864b3fda5e98bcbb586b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8658f3ea744b5ede7fc9864b3fda5e98bcbb586b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a294e44ae025efeddbc862ddfec6f56add7de971" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a68efc7e68c0a2ccf58b53825b9aa7cf6c80bf2a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a68efc7e68c0a2ccf58b53825b9aa7cf6c80bf2a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbeff794419a490fd553aa3150d4e23edd83c880" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be777d37d1127896903bfcbdd12c18954a73773f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be777d37d1127896903bfcbdd12c18954a73773f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c128232c6733aeddf815cc05f87f69403a94aa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c128232c6733aeddf815cc05f87f69403a94aa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/1/a14b2cf34cdb00d97a83d2078fbae5819bb326e7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/1/a14b2cf34cdb00d97a83d2078fbae5819bb326e7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/e/ae9d3632d4f8f67bf2050988ad77cc9c24835550" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/e/ae9d3632d4f8f67bf2050988ad77cc9c24835550" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb84a2b86f0c6eff694530b0172d5e81144c7817" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb84a2b86f0c6eff694530b0172d5e81144c7817" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c72399d4133b9ee6ff06da3ff401abeaac669ff9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/7/c72399d4133b9ee6ff06da3ff401abeaac669ff9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3f1f8e40ab144f0045ed7325ce7d41c482adddf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3f1f8e40ab144f0045ed7325ce7d41c482adddf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/dba0c5ce173fbaee71cdf4c050ea4cbdf20bd12c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/dba0c5ce173fbaee71cdf4c050ea4cbdf20bd12c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de30bb963d211d03952b79573a5b089e002afad6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de30bb963d211d03952b79573a5b089e002afad6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f0598a410977b22931e94729e08572786f632661" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f0598a410977b22931e94729e08572786f632661" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f97be1e3e4d7778cb2f804b1667b23f439bf996f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f97be1e3e4d7778cb2f804b1667b23f439bf996f" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteDietCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteDietCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteExerciseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteExerciseCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteInstructorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteInstructorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteSubscriptionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/command/admin/DeleteSubscriptionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/connection/DbConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/connection/DbConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/content/AttributeName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/content/AttributeName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/content/ColumnName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/content/ColumnName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/AssignedDiet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/AssignedDiet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/AssignedExercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/AssignedExercise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/BoughtSubscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/BoughtSubscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Diet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Diet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Exercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Exercise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Instructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/SelectedInstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/SelectedInstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/Subscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/DietRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/DietRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/ExerciseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/ExerciseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/InstructorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/InstructorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/SubscriptionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/repository/SubscriptionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/DietService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/DietService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/ExerciseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/ExerciseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/InstructorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/InstructorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/service/SubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/service/SubscriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/diet/DietSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/diet/DietSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/diet/DietUserSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/diet/DietUserSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/exercise/ExerciseSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/exercise/ExerciseSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/exercise/ExerciseUserSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/exercise/ExerciseUserSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorSelectedInstructorSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorSelectedInstructorSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorUserSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/instructor/InstructorUserSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/subscription/SubscriptionSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/subscription/SubscriptionSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/subscription/SubscriptionUserIdSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/specification/subscription/SubscriptionUserIdSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/validation/BalanceValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/validation/BalanceValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/diet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/diet.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/exercise.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/exercise.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/instructors.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/instructors.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/services.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/services.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/epam/web/entity/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +65,8 @@
         <option value="Tag Library Descriptor" />
         <option value="CSS File" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -142,23 +101,24 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3448276" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\maxxx\IdeaProjects\web\src\main\webapp\jsp" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\maxxx\IdeaProjects\web\src\main\webapp\jsp" />
       <recent name="C:\Users\maxxx\IdeaProjects\web\src\main\webapp\img" />
       <recent name="C:\Users\maxxx\IdeaProjects\web\src\main\webapp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maxxx\IdeaProjects\final_project\web\src\test\resources" />
+      <recent name="C:\Users\maxxx\IdeaProjects\web\src\main\webapp\jsp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -173,29 +133,92 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Server">
-    <configuration name="BalanceValidator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="by.epam.web.validation.BalanceValidator" />
+  <component name="RunManager" selected="TestNG.UserRepositoryTest.testUpdateEntity">
+    <configuration name="UserRepositoryTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="by.epam.web.validation.*" />
+          <option name="PATTERN" value="test.epam.web.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="test.epam.web.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.epam.web.repository.UserRepositoryTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PasswordEncrypter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="by.epam.web.action.PasswordEncrypter" />
+    <configuration name="UserRepositoryTest.testAddEntity" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="by.epam.web.action.*" />
+          <option name="PATTERN" value="test.epam.web.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="test.epam.web.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.epam.web.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testAddEntity" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testQuery" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.epam.web.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.epam.web.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.epam.web.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testQuery" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testRemoveEntity" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.epam.web.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.epam.web.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.epam.web.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testRemoveEntity" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testUpdateEntity" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.epam.web.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.epam.web.repository" />
+      <option name="MAIN_CLASS_NAME" value="test.epam.web.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testUpdateEntity" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -273,14 +296,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.PasswordEncrypter" />
-      <item itemvalue="Application.BalanceValidator" />
       <item itemvalue="Tomcat Server.Server" />
+      <item itemvalue="TestNG.UserRepositoryTest" />
+      <item itemvalue="TestNG.UserRepositoryTest.testAddEntity" />
+      <item itemvalue="TestNG.UserRepositoryTest.testRemoveEntity" />
+      <item itemvalue="TestNG.UserRepositoryTest.testQuery" />
+      <item itemvalue="TestNG.UserRepositoryTest.testUpdateEntity" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BalanceValidator" />
-        <item itemvalue="Application.PasswordEncrypter" />
+        <item itemvalue="TestNG.UserRepositoryTest.testUpdateEntity" />
+        <item itemvalue="TestNG.UserRepositoryTest" />
+        <item itemvalue="TestNG.UserRepositoryTest.testQuery" />
+        <item itemvalue="TestNG.UserRepositoryTest.testRemoveEntity" />
+        <item itemvalue="TestNG.UserRepositoryTest.testAddEntity" />
       </list>
     </recent_temporary>
   </component>
@@ -358,7 +387,8 @@
       <workItem from="1575876282972" duration="2577000" />
       <workItem from="1575968766890" duration="11527000" />
       <workItem from="1576166523730" duration="3125000" />
-      <workItem from="1576254172447" duration="10125000" />
+      <workItem from="1576254172447" duration="10202000" />
+      <workItem from="1576419372336" duration="10559000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1575979304147</created>
@@ -367,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575979304147</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add entity Status">
+      <created>1576265048839</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576265048839</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +425,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Add entity Status" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add entity Status" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

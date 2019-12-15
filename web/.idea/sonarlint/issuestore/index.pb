@@ -269,3 +269,7 @@ U
 %src/main/webapp/jsp/coaching-room.jsp,7\5\759e34a6b152845946af5f8790af1afbc7fa05d4
 j
 :src/main/java/by/epam/web/connection/DbConnectionPool.java,7\c\7c2d7c43e16d44c14c94de81b7e847f1a1320dc2
+[
++src/main/java/by/epam/web/entity/State.java,3\b\3b1e8048c431511d9fb8272fe23be621e31d668a
+‰
+Ysrc/main/java/by/epam/web/specification/subscription/SubscriptionUserIdSpecification.java,b\9\b9268805965f7c70060353a32d0cf474ef6fa51a

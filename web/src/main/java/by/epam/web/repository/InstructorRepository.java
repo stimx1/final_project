@@ -1,7 +1,6 @@
 package by.epam.web.repository;
 
 import by.epam.web.connection.DbConnectionPool;
-import by.epam.web.content.ColumnName;
 import by.epam.web.entity.Instructor;
 import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class InstructorRepository implements EntityRepository<Instructor> {
     private static final Logger logger = LogManager.getLogger(InstructorRepository.class);
-    private static final String SQL_INSERT_INSTRUCTOR = "INSERT INTO instructors (first_name,last_name,info,state) VALUES (?,?,?,?);";
+    private static final String SQL_INSERT_INSTRUCTOR = "INSERT INTO instructors (first_name,last_name,info,state) VALUES (?,?,?,CAST (? AS status));";
     private static final String SQL_DELETE_INSTRUCTOR = "DELETE FROM instructors WHERE id = ? ;";
     private static final String SQL_UPDATE_INSTRUCTOR = "UPDATE instructors SET first_name = ?, last_name = ?, info = ?, state = CAST (? AS status) WHERE id = ? ;";
 
@@ -69,7 +68,7 @@ public class InstructorRepository implements EntityRepository<Instructor> {
              ResultSet resultSet = statement.executeQuery()){
             while (resultSet.next()) {
                 Instructor instructor = new Instructor();
-                instructor.setId(resultSet.getInt("id"));
+                instructor.setId(resultSet.getInt(ColumnName.ID));
                 instructor.setFirstName(resultSet.getString(ColumnName.FIRST_NAME));
                 instructor.setLastName(resultSet.getString(ColumnName.LAST_NAME));
                 instructor.setInfo(resultSet.getString(ColumnName.INFO));

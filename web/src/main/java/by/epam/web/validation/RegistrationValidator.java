@@ -1,6 +1,6 @@
 package by.epam.web.validation;
 
-import by.epam.web.content.AttributeName;
+import by.epam.web.command.AttributeName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,7 +39,7 @@ public class RegistrationValidator {
             flag = true;
             map.put(AttributeName.INCORRECT_FIRST_NAME, true);
         }
-        if (validateFirstName(lastName)) {
+        if (validateLastName(lastName)) {
             map.put(AttributeName.INPUT_LAST_NAME, lastName);
         } else {
             flag = true;
@@ -51,23 +51,23 @@ public class RegistrationValidator {
         return map;
     }
 
-    public boolean validateEmail(String email){
+    private boolean validateEmail(String email){
         return !email.isEmpty() && email.matches(EMAIL_REGEX) && email.length() < 50;
     }
 
-    public boolean validatePass(String pass){
+    private boolean validatePass(String pass){
         return pass.length()>=6 && pass.length()< 40;
     }
 
-    public boolean validateRepeatedPass(String pass, String repPass){
+    private boolean validateRepeatedPass(String pass, String repPass){
         return pass.equals(repPass);
     }
 
-    public boolean validateLastName(String lastName){
+    private boolean validateLastName(String lastName){
         return lastName.matches(NAME_REGEX);
     }
 
-    public boolean validateFirstName(String firstName){
+    private boolean validateFirstName(String firstName){
         return firstName.matches(NAME_REGEX);
     }
 }

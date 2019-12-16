@@ -26,8 +26,7 @@
             <th><fmt:message key="th.firstname" bundle="${val}"/></th>
             <th><fmt:message key="th.lastname" bundle="${val}"/></th>
             <th><fmt:message key="th.role" bundle="${val}"/></th>
-            <th><fmt:message key="th.action" bundle="${val}"/></th>
-            <th><fmt:message key="menu.assignment" bundle="${val}"/></th>
+            <th><fmt:message key="th.assignment" bundle="${val}"/></th>
         </tr>
         <c:forEach var="elem" items="${userList}">
             <tr>
@@ -36,7 +35,6 @@
                 <td>${elem.firstName}</td>
                 <td>${elem.lastName}</td>
                 <td>${elem.role}</td>
-                <td><a href="/controller?command=delete_user&userId=${elem.id}&redirect=/controller?command=get_users" class="button"><fmt:message key="button.delete" bundle="${val}"/></a></td>
                 <td>
                     <ul>
                         <li><a href="/controller?command=get_assigned_diet&userId=${elem.id}"><fmt:message key="caption.diet" bundle="${val}"/></a> </li>

@@ -1,14 +1,12 @@
 package by.epam.web.service;
 
 import by.epam.web.action.PasswordEncrypter;
-import by.epam.web.content.AttributeName;
-import by.epam.web.content.MessageName;
+import by.epam.web.command.AttributeName;
 import by.epam.web.entity.User;
 import by.epam.web.entity.UserRole;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.repository.UserRepository;
-import by.epam.web.resource.MessageManager;
 import by.epam.web.specification.user.UserEmailPasswordSpecification;
 import by.epam.web.specification.user.UserEmailSpecification;
 import by.epam.web.specification.user.UserSpecification;
@@ -16,7 +14,6 @@ import by.epam.web.validation.RegistrationValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +29,7 @@ public class UserService {
         return INSTANCE;
     }
 
-    public void addUser(String login, String email, String password, String lastName, String firstName, UserRole role) throws ServiceException {
+    public void addUser(String email, String password, String lastName, String firstName, UserRole role) throws ServiceException {
         String encryptPass = PasswordEncrypter.encrypt(password);
         User user = new User(encryptPass, email, lastName, firstName, role);
         try {
@@ -59,7 +56,7 @@ public class UserService {
             return repository.query(new UserSpecification());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Users not found", e);
+            throw new ServiceException("Users find error", e);
         }
     }
 
@@ -69,7 +66,7 @@ public class UserService {
             return repository.query(new UserEmailPasswordSpecification(email, encrypted));
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Users not found", e);
+            throw new ServiceException("Users find error", e);
         }
     }
 
@@ -80,7 +77,7 @@ public class UserService {
         try {
             List<User> userList = repository.query(new UserEmailSpecification(email));
             if (userList.size() > 0) {
-                map.put(AttributeName.REGISTRATION_ERROR, MessageManager.getProperty(MessageName.REGISTRATION_ERROR));
+                map.put(AttributeName.REGISTRATION_ERROR, true);
                 map.put(AttributeName.FLAG,true);
                 return map;
             }

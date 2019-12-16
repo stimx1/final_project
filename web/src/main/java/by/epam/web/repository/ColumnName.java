@@ -1,4 +1,4 @@
-package by.epam.web.content;
+package by.epam.web.repository;
 
 public class ColumnName {
     public static final String ID = "id";

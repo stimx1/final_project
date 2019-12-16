@@ -1,7 +1,6 @@
 package by.epam.web.repository;
 
 import by.epam.web.connection.DbConnectionPool;
-import by.epam.web.content.ColumnName;
 import by.epam.web.entity.User;
 import by.epam.web.entity.UserRole;
 import by.epam.web.exception.EntityRepositoryException;

@@ -1,7 +1,6 @@
 package by.epam.web.repository;
 
 import by.epam.web.connection.DbConnectionPool;
-import by.epam.web.content.ColumnName;
 import by.epam.web.entity.State;
 import by.epam.web.entity.Subscription;
 import by.epam.web.exception.EntityRepositoryException;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class SubscriptionRepository implements EntityRepository<Subscription> {
     private static final Logger logger = LogManager.getLogger(SubscriptionRepository.class);
-    private static final String SQL_INSERT_SUBSCRIPTION = "INSERT INTO subscriptions (name,price,duration,state) VALUES (?,?,?,?);";
+    private static final String SQL_INSERT_SUBSCRIPTION = "INSERT INTO subscriptions (name,price,duration,state) VALUES (?,?,?,CAST (? AS status));";
     private static final String SQL_DELETE_SUBSCRIPTION = "DELETE FROM subscriptions WHERE id = ?;";
     private static final String SQL_UPDATE_SUBSCRIPTION = "UPDATE subscriptions SET name = ?, price = ?, duration = ?, state = CAST (? AS status) WHERE id = ? ;";
 

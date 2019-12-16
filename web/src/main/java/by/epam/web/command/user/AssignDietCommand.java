@@ -1,10 +1,10 @@
 package by.epam.web.command.user;
 
 import by.epam.web.command.ActionCommand;
-import by.epam.web.content.AttributeName;
-import by.epam.web.content.PageName;
-import by.epam.web.content.RedirectName;
-import by.epam.web.content.SessionRequestContent;
+import by.epam.web.command.AttributeName;
+import by.epam.web.command.PageName;
+import by.epam.web.command.RedirectName;
+import by.epam.web.command.SessionRequestContent;
 import by.epam.web.entity.User;
 import by.epam.web.entity.UserRole;
 import by.epam.web.exception.CommandException;

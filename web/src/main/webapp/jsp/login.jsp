@@ -1,10 +1,10 @@
-<%@ page import="by.epam.web.resource.ConfigurationManager" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="login" var="val"/>
+<fmt:setBundle basename="message" var="value"/>
 <html>
 <head>
     <title>Login</title>
@@ -96,39 +96,50 @@
             <input name="command" type="hidden" value="registration"/>
             <div>
                 <input name="email" class="input" type="email" value="${inputEmail}" placeholder="<fmt:message key="input.email" bundle="${val}"/>">
-                <label class="invisible invalid-value-label-clients">Ошибка</label>
-
+                <fmt:bundle basename="message">
+                <label class="invisible invalid-value-label-clients"><fmt:message key="message.incorrectEmail" bundle="${value}"/></label>
                 <label class="invalid-value-label"><c:if
-                        test="${ incorrectEmail eq true}">Incorrect Email</c:if></label>
+                        test="${ incorrectEmail eq true}"><fmt:message key="message.incorrectEmail" bundle="${value}"/></c:if></label>
+                </fmt:bundle>
             </div>
             <div>
                 <input name="firstName" class="input" type="text" placeholder="<fmt:message key="input.firstName" bundle="${val}"/>"
                        value="${inputFirstName}">
-                <label class="invisible invalid-value-label-clients">Ошебка</label>
+                <fmt:bundle basename="message">
+                <label class="invisible invalid-value-label-clients"><fmt:message key="message.incorrectFirstName" bundle="${value}"/></label>
                 <label class="invalid-value-label"><c:if
-                        test="${ incorrectFirstName eq true}">Incorrect pass</c:if></label>
+                        test="${ incorrectFirstName eq true}"><fmt:message key="message.incorrectFirstName" bundle="${value}"/></c:if></label>
+                </fmt:bundle>
             </div>
             <div>
                 <input name="lastName" class="input" type="text" placeholder="<fmt:message key="input.lastName" bundle="${val}"/>" value="${inputLastName}">
-                <label class="invisible invalid-value-label-clients">Ошебка</label>
+                <fmt:bundle basename="message">
+                <label class="invisible invalid-value-label-clients"><fmt:message key="message.incorrectLastName" bundle="${value}"/></label>
                 <label class="invalid-value-label"><c:if
-                        test="${ incorrectLastName eq true}">Incorrect pass</c:if></label>
+                        test="${ incorrectLastName eq true}"><fmt:message key="message.incorrectLastName" bundle="${value}"/></c:if></label>
+            </fmt:bundle>
             </div>
             <div>
                 <input name="password" class="input" type="password" placeholder="<fmt:message key="input.password" bundle="${val}"/>"
                        value="${inputPassword}">
-                <label class="invisible invalid-value-label-clients">Ошебка</label>
-                <label class="invalid-value-label"><c:if
-                        test="${ incorrectPassword eq true}">Incorrect pass</c:if></label>
+                <fmt:bundle basename="message">
+                    <label class="invisible invalid-value-label-clients"><fmt:message key="message.incorrectPassword" bundle="${value}"/></label>
+                    <label class="invalid-value-label"><c:if
+                            test="${ incorrectPassword eq true}"><fmt:message key="message.incorrectPassword" bundle="${value}"/></c:if></label>
+                </fmt:bundle>
             </div>
             <div>
                 <input name="repeatedPassword" class="input" type="password" placeholder="<fmt:message key="input.repeatPassword" bundle="${val}"/>"
                        value="${inputRepeatedPassword}">
-                <label class="invisible invalid-value-label-clients">Ошебка</label>
-                <label class="invalid-value-label"><c:if
-                        test="${ incorrectRepeatedPassword eq true}">Incorrect pass</c:if></label>
+                <fmt:bundle basename="message">
+                    <label class="invisible invalid-value-label-clients"><fmt:message key="message.incorrectRepeatPassword" bundle="${value}"/></label>
+                    <label class="invalid-value-label"><c:if
+                            test="${ incorrectRepeatedPassword eq true}"><fmt:message key="message.incorrectRepeatPassword" bundle="${value}"/></c:if></label>
+                </fmt:bundle>
             </div>
-            <label class="invalid-value-label-clients">${errorRegistrationMessage}</label>
+            <fmt:bundle basename="message">
+            <label class="invalid-value-label-clients"><c:if test="${errorRegistrationMessage eq true}"><fmt:message key="message.registerError" bundle="${value}"/></c:if></label>
+            </fmt:bundle>
             <a href="#" class="button" onclick="validate()"><fmt:message key="button.signUp" bundle="${val}"/></a>
         </form>
     </div>

@@ -1,4 +1,4 @@
-package by.epam.web.content;
+package by.epam.web.command;
 
 public class RedirectName {
     public static final String ACCOUNT = "/controller?command=user_account";

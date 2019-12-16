@@ -1,13 +1,11 @@
 package by.epam.web.command.user;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.content.*;
+import by.epam.web.command.*;
 import by.epam.web.entity.Subscription;
 import by.epam.web.entity.User;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
-import by.epam.web.resource.MessageManager;
 import by.epam.web.service.AccountService;
 import by.epam.web.service.SubscriptionService;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +20,7 @@ public class DepositAccountCommand implements ActionCommand {
         String page = ConfigurationManager.getProperty(PageName.ACCOUNT);
         User user = (User)(sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
         int userId = user.getId();
-        int amount = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.AMOUNT));
+        String amount = sessionRequestContent.getParameter(AttributeName.AMOUNT);
         AccountService accountService = AccountService.getInstance();
         try {
             boolean correct = accountService.updateBalance(userId,amount);
@@ -32,7 +30,7 @@ public class DepositAccountCommand implements ActionCommand {
                 int currentAmount = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.CURRENT_AMOUNT));
                 sessionRequestContent.setAttribute(AttributeName.AMOUNT,currentAmount);
                 sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS,subscriptions);
-                sessionRequestContent.setAttribute(AttributeName.DEPOSIT_BALANCE_ERROR, MessageManager.getProperty(MessageName.DEPOSIT_BALANCE_ERROR));
+                sessionRequestContent.setAttribute(AttributeName.DEPOSIT_BALANCE_ERROR, true);
             }else {
                 sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.ACCOUNT);
             }

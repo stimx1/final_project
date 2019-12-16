@@ -63,4 +63,28 @@ public class Subscription extends Entity {
     public void setEndDay(LocalDate endDay) {
         this.endDay = endDay;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Subscription that = (Subscription) o;
+
+        if (price != that.price) return false;
+        if (duration != that.duration) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (startDay != null ? !startDay.equals(that.startDay) : that.startDay != null) return false;
+        return endDay != null ? endDay.equals(that.endDay) : that.endDay == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + price;
+        result = 31 * result + duration;
+        result = 31 * result + (startDay != null ? startDay.hashCode() : 0);
+        result = 31 * result + (endDay != null ? endDay.hashCode() : 0);
+        return result;
+    }
 }

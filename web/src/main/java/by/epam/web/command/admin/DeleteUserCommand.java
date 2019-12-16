@@ -1,9 +1,9 @@
 package by.epam.web.command.admin;
 
 import by.epam.web.command.ActionCommand;
-import by.epam.web.content.AttributeName;
-import by.epam.web.content.PageName;
-import by.epam.web.content.SessionRequestContent;
+import by.epam.web.command.AttributeName;
+import by.epam.web.command.PageName;
+import by.epam.web.command.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;

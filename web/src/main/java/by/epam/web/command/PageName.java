@@ -1,4 +1,4 @@
-package by.epam.web.content;
+package by.epam.web.command;
 
 public class PageName {
     public static final String INDEX = "path.page.index";

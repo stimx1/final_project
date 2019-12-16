@@ -1,13 +1,14 @@
 package by.epam.web.command.user;
 
 import by.epam.web.command.ActionCommand;
-import by.epam.web.content.*;
+import by.epam.web.command.AttributeName;
+import by.epam.web.command.PageName;
+import by.epam.web.command.SessionRequestContent;
 import by.epam.web.entity.Subscription;
 import by.epam.web.entity.User;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
-import by.epam.web.resource.MessageManager;
 import by.epam.web.service.SubscriptionService;
 import by.epam.web.service.UserService;
 import org.apache.logging.log4j.LogManager;

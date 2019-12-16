@@ -3,7 +3,7 @@ package by.epam.web.servlet;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.command.CommandProvider;
 import by.epam.web.connection.DbConnectionPool;
-import by.epam.web.content.SessionRequestContent;
+import by.epam.web.command.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.resource.ConfigurationManager;
 import org.apache.logging.log4j.LogManager;

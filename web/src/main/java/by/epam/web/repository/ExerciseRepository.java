@@ -1,7 +1,6 @@
 package by.epam.web.repository;
 
 import by.epam.web.connection.DbConnectionPool;
-import by.epam.web.content.ColumnName;
 import by.epam.web.entity.Exercise;
 import by.epam.web.entity.State;
 import by.epam.web.exception.EntityRepositoryException;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class ExerciseRepository implements EntityRepository<Exercise> {
     private static final Logger logger = LogManager.getLogger(ExerciseRepository.class);
-    private static final String SQL_INSERT_EXERCISE = "INSERT INTO exercise (name, description,state) VALUES (?,?,?);";
+    private static final String SQL_INSERT_EXERCISE = "INSERT INTO exercise (name, description,state) VALUES (?,?,CAST (? AS status));";
     private static final String SQL_DELETE_EXERCISE = "DELETE FROM exercise WHERE id = ? ;";
     private static final String SQL_UPDATE_EXERCISE = "UPDATE exercise SET name = ?, description = ?, state = CAST (? AS status) WHERE id = ? ;";
 

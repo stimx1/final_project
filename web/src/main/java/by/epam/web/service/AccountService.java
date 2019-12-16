@@ -27,7 +27,7 @@ public class AccountService {
         return INSTANCE;
     }
 
-    public boolean updateBalance(int userId, int amount) throws ServiceException {
+    public boolean updateBalance(int userId, String amount) throws ServiceException {
         try {
             List<UserBalance> balanceList = findByUserId(userId);
             Iterator<UserBalance> iterator = balanceList.iterator();
@@ -35,7 +35,7 @@ public class AccountService {
             if (iterator.hasNext()) {
                 userBalance = iterator.next();
                 if (BalanceValidator.validateDeposit(userBalance, amount)) {
-                    userBalance.setAmount(amount + userBalance.getAmount());
+                    userBalance.setAmount(Integer.parseInt(amount) + userBalance.getAmount());
                     repository.updateEntity(userBalance);
                     return true;
                 }

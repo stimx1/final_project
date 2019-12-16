@@ -273,3 +273,7 @@ j
 +src/main/java/by/epam/web/entity/State.java,3\b\3b1e8048c431511d9fb8272fe23be621e31d668a
 ‰
 Ysrc/main/java/by/epam/web/specification/subscription/SubscriptionUserIdSpecification.java,b\9\b9268805965f7c70060353a32d0cf474ef6fa51a
+V
+&src/test/resources/DBconfig.properties,f\2\f2da9f3b4ab3222e21906c3c7201dc0fa0a6be63
+n
+>src/test/java/test/epam/web/repository/UserRepositoryTest.java,a\1\a17c5fcee23a5043b9b5dec09e7895be3c9db7de

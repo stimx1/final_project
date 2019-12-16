@@ -1,9 +1,9 @@
 package by.epam.web.command.user;
 
 import by.epam.web.command.ActionCommand;
-import by.epam.web.content.AttributeName;
-import by.epam.web.content.PageName;
-import by.epam.web.content.SessionRequestContent;
+import by.epam.web.command.AttributeName;
+import by.epam.web.command.PageName;
+import by.epam.web.command.SessionRequestContent;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
 import by.epam.web.service.UserService;
@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Map;
 
 public class RegistrationCommand implements ActionCommand {
-    private static final Logger logger = LogManager.getLogger(ActionCommand.class);
+    private static final Logger logger = LogManager.getLogger(RegistrationCommand.class);
 
     @Override
     public String execute(SessionRequestContent sessionRequestContent) {
@@ -27,7 +27,7 @@ public class RegistrationCommand implements ActionCommand {
         UserService userService = UserService.getINSTANCE();
         try {
             Map<String,Object> attributeMap = userService.register(email,pass,repeatPass,firstName,lastName);
-            if(!attributeMap.containsKey("flag")) {
+            if(!attributeMap.containsKey(AttributeName.FLAG)) {
                 page = ConfigurationManager.getProperty(PageName.INDEX);
             }else {
                 logger.info(attributeMap);

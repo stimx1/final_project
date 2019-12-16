@@ -60,8 +60,8 @@
                 <td>?</td>
                 <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_instructor"/>
-                    <td><input type="text" name="first_name" value=""/></td>
-                    <td><input type="text" name="last_name" value=""/></td>
+                    <td><input type="text" name="firstName" value=""/></td>
+                    <td><input type="text" name="lastName" value=""/></td>
                     <td><input type="text" name="info" value=""/></td>
                     <td>&nbsp;</td>
                     <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>

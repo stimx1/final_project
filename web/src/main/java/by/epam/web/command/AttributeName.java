@@ -1,4 +1,4 @@
-package by.epam.web.content;
+package by.epam.web.command;
 
 public class AttributeName {
     public static final String CURRENT_USER = "currentUser";

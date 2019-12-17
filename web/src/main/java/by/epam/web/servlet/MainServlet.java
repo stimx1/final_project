@@ -2,6 +2,7 @@ package by.epam.web.servlet;
 
 import by.epam.web.command.ActionCommand;
 import by.epam.web.command.CommandProvider;
+import by.epam.web.command.PageName;
 import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.command.SessionRequestContent;
 import by.epam.web.exception.CommandException;
@@ -26,17 +27,16 @@ public class MainServlet extends HttpServlet {
             processRequest(request, response);
         } catch (CommandException e) {
             logger.error(e);
-            response.sendRedirect(ConfigurationManager.getProperty("path.page.error"));
+            response.sendRedirect(ConfigurationManager.getProperty(PageName.ERROR));
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("errorLoginPassMessage", " ");
         try {
             processRequest(request, response);
         } catch (CommandException e) {
             logger.error(e);
-            response.sendRedirect(ConfigurationManager.getProperty("path.page.error"));
+            response.sendRedirect(ConfigurationManager.getProperty(PageName.ERROR));
         }
     }
 
@@ -48,18 +48,24 @@ public class MainServlet extends HttpServlet {
         ActionCommand command = client.defineCommand(request);
         logger.info(command);
         try {
+
             page = command.execute(sessionRequestContent);
             sessionRequestContent.insertAttributes(request);
-            String redirect = (String)sessionRequestContent.getAttribute("redirect");
+            String redirect = (String) sessionRequestContent.getAttribute("redirect");
             if (redirect == null) {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-                dispatcher.forward(request, response);
+                if (page != null) {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+                    dispatcher.forward(request, response);
+                } else {
+                    page = ConfigurationManager.getProperty(PageName.INDEX);
+                    response.sendRedirect(request.getContextPath() + page);
+                }
             } else {
                 response.sendRedirect(redirect);
             }
-        } catch (CommandException e) {
+        } catch (CommandException e){
             logger.catching(e);
-            throw new ServletException(e);
+            throw new ServletException();
         }
     }
 

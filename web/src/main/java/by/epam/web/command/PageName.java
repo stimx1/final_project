@@ -16,4 +16,5 @@ public class PageName {
     public static final String ASSIGNED_DIET = "path.page.assignedDiet";
     public static final String ASSIGNED_EXERCISE = "path.page.assignedExercise";
     public static final String COACHING_ROOM = "path.page.coachingRoom";
+    public static final String ERROR = "path.page.error";
 }

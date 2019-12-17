@@ -14,7 +14,6 @@
             var name = document.getElementById("login");
             var registrationForm = document.getElementById('form-2');
             var inputsToValidate = registrationForm.querySelectorAll("div>input");
-            var rules = {type: "password",};
 
             var rules = {
                 "email": new RegExp("\\w[\\d\\w]{2,}@\\w+\\.\\w{2,4}"),

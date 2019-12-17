@@ -30,7 +30,6 @@
                     </ul>
                 </li>
             </c:if>
-            <li><a  href=""><fmt:message key="menu.history" bundle="${val}"/></a></li>
             <c:if test="${ currentUser.role eq 'ADMIN' }">
                 <li class="sub">
                     <a  href="#"><fmt:message key="menu.admin" bundle="${val}"/></a>

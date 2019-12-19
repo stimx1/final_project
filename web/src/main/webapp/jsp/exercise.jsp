@@ -38,10 +38,11 @@
             <td>?</td>
             <form id="form-2" action="/controller" method="post">
                 <input type="hidden" name="command" value="add_exercise"/>
-                <td><input type="text" name="exerciseName" value=""/></td>
-                <td><input type="text" name="exerciseDescription" value=""/></td>
-                <td><a href="#" class="button"
-                       onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
+                <td><input type="text" name="exerciseName" value="" pattern="^[A-Z](\D|\d){2,50}$"/></td>
+                <td><input type="text" name="exerciseDescription" value="" pattern="^[A-Z](\D|\d){2,50}$"/></td>
+<%--                <td><a href="#" class="button"--%>
+<%--                       onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>--%>
+                <td><input type="submit" value="<fmt:message key="button.add" bundle="${val}"/>"> </td>
             </form>
         </tr>
     </table>

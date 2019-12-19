@@ -8,18 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CommandProvider {
     private static final Logger logger = LogManager.getLogger(CommandProvider.class);
-    public ActionCommand defineCommand(HttpServletRequest request){
+
+    public ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new EmptyCommand();
-        String action = request.getParameter("command");
+        String action = request.getParameter(AttributeName.COMMAND);
         logger.info(action);
-        if(action == null || action.isEmpty()){
-            throw new IllegalArgumentException();
-    }
         try {
+            if (action == null || action.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();
-        } catch (IllegalArgumentException e){
-            request.setAttribute("wrongAction", action + MessageManager.getProperty("message.wrongaction"));
+        } catch (IllegalArgumentException e) {
+            logger.catching(e);
+            return current;
         }
         return current;
     }

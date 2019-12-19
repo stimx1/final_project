@@ -33,8 +33,8 @@
         <c:forEach var="elem" items="${instructors}">
             <tr>
                 <td>${elem.id}</td>
-                <td>${elem.lastName}</td>
                 <td>${elem.firstName}</td>
+                <td>${elem.lastName}</td>
                 <td>${elem.info}</td>
                 <td>
                     <c:choose>
@@ -60,11 +60,12 @@
                 <td>?</td>
                 <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_instructor"/>
-                    <td><input type="text" name="firstName" value=""/></td>
-                    <td><input type="text" name="lastName" value=""/></td>
-                    <td><input type="text" name="info" value=""/></td>
+                    <td><input type="text" name="firstName" value="" pattern="^[A-Z][a-z]{2,20}$"/></td>
+                    <td><input type="text" name="lastName" value="" pattern="^[A-Z][a-z]{2,20}$"/></td>
+                    <td><input type="text" name="info" value="" pattern="^[A-Z]([a-z]|\d){2,50}$"/></td>
                     <td>&nbsp;</td>
-                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
+<%--                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>--%>
+                    <td><input type="submit" value="<fmt:message key="button.add" bundle="${val}"/>"> </td>
                 </form>
             </tr>
         </c:if>

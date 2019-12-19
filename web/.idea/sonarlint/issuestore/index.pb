@@ -195,8 +195,6 @@ d
 4src/main/java/by/epam/web/filter/EncodingFilter.java,c\7\c78e67b913b32520eb3da381181785a2c9826ca4
 o
 ?src/main/java/by/epam/web/validation/RegistrationValidator.java,4\d\4d8d7d5fc5adc3608235eaf27e400893d4117450
-l
-<src/main/java/by/epam/web/content/SessionRequestContent.java,c\c\cc44595c115512ee1516d12c59223a79ebc4fc36
 
 _src/main/java/by/epam/web/specification/subscription/BoughtSubscriptionUserIdSpecification.java,d\2\d26f8f06aadd0533e1a6e0c7640924392cd756df
 x
@@ -205,10 +203,6 @@ Hsrc/main/java/by/epam/web/specification/user/UserEmailSpecification.java,8\9\8
 Psrc/main/java/by/epam/web/specification/user/UserEmailPasswordSpecification.java,d\4\d48c99702fbed894373e9226faa04aea1c50bd46
 S
 #src/main/webapp/css/admin-style.css,7\d\7de1d1e1b952c85e9c4e947b10aded4d5522a328
-d
-4src/main/java/by/epam/web/content/AttributeName.java,2\a\2a341a8701ff9524301bde516e428c6580d57440
-_
-/src/main/java/by/epam/web/content/PageName.java,9\c\9c6ad4b70a1ab0c99281ab2b18b25c45dabc8e4f
 l
 <src/main/java/by/epam/web/command/admin/GetDietsCommand.java,1\4\14fa47757fd40390b8b47b95175fe14dfd3b8ed4
 p
@@ -221,8 +215,6 @@ S
 #src/main/webapp/css/table-style.css,7\b\7b727f51013ed80fb4f78a99217676586d5546b9
 M
 src/main/webapp/jsp/users.jsp,5\c\5c69528937807067c82cf3f6911e3a283286d0a5
-a
-1src/main/java/by/epam/web/content/ColumnName.java,4\7\47cfe3750b042c43f32f1e622d3197c8259481d3
 L
 src/main/webapp/jsp/diet.jsp,c\3\c3c128232c6733aeddf815cc05f87f69403a94aa
 P
@@ -239,12 +231,8 @@ r
 Bsrc/main/java/by/epam/web/command/user/BuySubscriptionCommand.java,5\a\5af068b7baa46b24b03b22d7ed858ab545cd9353
 j
 :src/main/java/by/epam/web/validation/BalanceValidator.java,8\6\8658f3ea744b5ede7fc9864b3fda5e98bcbb586b
-b
-2src/main/java/by/epam/web/content/MessageName.java,5\c\5c8668c64612f578dbe33b648aa25895b70ca497
 U
 %src/main/webapp/css/account-style.css,a\8\a8a6a52d1b00d7f4c93ca10d9366e8349a26a1ea
-c
-3src/main/java/by/epam/web/content/RedirectName.java,b\c\bce9f2e6c5453337666fb51fadcd74c959fa60e9
 m
 =src/main/java/by/epam/web/command/user/UpdateUserCommand.java,6\5\6584f88123e6064a7472f000ab6a88ed919f13b5
 p

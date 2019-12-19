@@ -27,28 +27,28 @@
                 <label class="caption"><fmt:message key="label.title" bundle="${val}"/></label>
                 <div class="field">
                     <label><fmt:message key="label.firstName" bundle="${val}"/>:</label>
-                    <input type="text" name="firstName" value="${currentUser.firstName}"/>
+                    <input type="text" name="firstName" value="${currentUser.firstName}" pattern="^[A-Z]([a-z]{2,40})$"/>
                     <fmt:bundle basename="message">
                         <c:if test="${ incorrectFirstName eq true}"><fmt:message key="message.incorrectFirstName" bundle="${message}"/></c:if>
                     </fmt:bundle>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.lastName" bundle="${val}"/>:</label>
-                    <input type="text" name="lastName" value="${currentUser.lastName}"/>
+                    <input type="text" name="lastName" value="${currentUser.lastName}" pattern="^[A-Z]([a-z]{2,40})$"/>
                     <fmt:bundle basename="message">
                         <c:if test="${ incorrectLastName eq true}"><fmt:message key="message.incorrectLastName" bundle="${message}"/></c:if>
                     </fmt:bundle>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.password" bundle="${val}"/>: </label>
-                    <input type="password" name="password" value=""/>
+                    <input type="password" name="password" value="" pattern="(^.{6,40})$"/>
                     <fmt:bundle basename="message">
                         <c:if test="${ incorrectPassword eq true}"><fmt:message key="message.incorrectPassword" bundle="${message}"/></c:if>
                     </fmt:bundle>
                 </div>
                 <div class="field">
                     <label><fmt:message key="label.repeatPassword" bundle="${val}"/>: </label>
-                    <input type="password" name="repeatedPassword" value=""/>
+                    <input type="password" name="repeatedPassword" value="" pattern="(^.{6,40})$"/>
                     <fmt:bundle basename="message">
                         <c:if test="${ incorrectRepeatedPassword eq true}"><fmt:message key="message.incorrectRepeatPassword" bundle="${message}"/></c:if>
                     </fmt:bundle>

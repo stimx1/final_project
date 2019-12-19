@@ -38,9 +38,10 @@
                 <td>?</td>
                 <form id="form-2" method="post" action="/controller">
                     <input type="hidden" name="command" value="add_diet"/>
-                    <td><input type="text" name="dietName" value=""/></td>
-                    <td><input type="text" name="dietDescription" value=""/></td>
-                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
+                    <td><input type="text" name="dietName" value="" pattern="^[A-Z](\D|\d){2,50}$"/></td>
+                    <td><input type="text" name="dietDescription" value="" pattern="^[A-Z](\D|\d){2,50}$"/></td>
+<%--                    <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>--%>
+                    <td><input type="submit" value="<fmt:message key="button.add" bundle="${val}"/>"></td>
                 </form>
             </tr>
         </table>

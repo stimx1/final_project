@@ -49,10 +49,11 @@
             <td>?</td>
             <form id="form-2" method="post" action="/controller">
                 <input type="hidden" name="command" value="add_subscription"/>
-                <td><input type="text" name="subscriptionName" value=""/></td>
-                <td><input type="text" name="subscriptionPrice" value=""/></td>
-                <td><input type="text" name="subscriptionDuration" value=""/></td>
-                <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>
+                <td><input type="text" name="subscriptionName" value="" pattern="^[A-Z]([a-z]|\d){2,50}$"/></td>
+                <td><input type="text" name="subscriptionPrice" value="" pattern="^\d{1,2}"$/></td>
+                <td><input type="text" name="subscriptionDuration" value="" pattern="^\d{1,2}$"/></td>
+<%--                <td><a href="#" class="button" onclick="document.getElementById('form-2').submit(); return false;"><fmt:message key="button.add" bundle="${val}"/></a></td>--%>
+                <td><input type="submit" value="<fmt:message key="button.add" bundle="${val}"/>"></td>
                 <td>&nbsp;</td>
             </form>
         </tr>

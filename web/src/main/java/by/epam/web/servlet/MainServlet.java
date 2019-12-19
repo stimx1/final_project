@@ -69,15 +69,4 @@ public class MainServlet extends HttpServlet {
         }
     }
 
-    @Override
-    public void destroy() {
-        super.destroy();
-        DbConnectionPool.INSTANCE.destroyPool();
-    }
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-
-    }
 }

@@ -27,7 +27,7 @@ public enum DbConnectionPool {
 
     private static final int DEFAULT_POOL_SIZE = 32;
 
-    DbConnectionPool(){
+    DbConnectionPool() {
         try {
             String url = DBConfigurationManger.getProperty(HOST);
             String user = DBConfigurationManger.getProperty(LOGIN);
@@ -36,8 +36,8 @@ public enum DbConnectionPool {
             freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
             givenAwayConnections = new ArrayDeque<>();
             Connection connection;
-            for(int i =0; i < DEFAULT_POOL_SIZE; i++){
-                connection = new ProxyConnection(DriverManager.getConnection(url,user,pass));
+            for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
+                connection = new ProxyConnection(DriverManager.getConnection(url, user, pass));
                 freeConnections.offer(connection);
             }
         } catch (SQLException e) {
@@ -45,7 +45,7 @@ public enum DbConnectionPool {
         }
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         Connection connection = null;
         try {
             connection = freeConnections.take();
@@ -57,7 +57,7 @@ public enum DbConnectionPool {
     }
 
     public void releaseConnection(Connection connection) throws DbConnectionPoolException {
-        if(connection.getClass() == ProxyConnection.class) {
+        if (connection.getClass() == ProxyConnection.class) {
             givenAwayConnections.remove(connection);
             freeConnections.offer(connection);
         } else {
@@ -65,19 +65,20 @@ public enum DbConnectionPool {
         }
     }
 
-    public void destroyPool(){
-        for(int i =0; i < DEFAULT_POOL_SIZE; i++){
+    public void destroyPool() {
+        for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
             try {
-                ((ProxyConnection)freeConnections.take()).reallyClose();
+                ((ProxyConnection) freeConnections.take()).reallyClose();
             } catch (InterruptedException e) {
                 logger.catching(e);
             }
         }
         deregisterDrivers();
     }
-    private void deregisterDrivers(){
+
+    private void deregisterDrivers() {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()){
+        while (drivers.hasMoreElements()) {
             try {
                 DriverManager.deregisterDriver(drivers.nextElement());
             } catch (SQLException e) {

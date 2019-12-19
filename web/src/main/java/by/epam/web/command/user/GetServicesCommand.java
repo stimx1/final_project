@@ -24,10 +24,10 @@ public class GetServicesCommand implements ActionCommand {
         logger.info("lol");
         try {
             List<Subscription> subscriptions = subscriptionService.findSubscription();
-            sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS,subscriptions);
+            sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS, subscriptions);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Subscriptions not found",e);
+            throw new CommandException("Subscriptions not found", e);
         }
         return page;
     }

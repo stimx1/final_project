@@ -1,10 +1,6 @@
 package by.epam.web.command.user;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.command.AttributeName;
-import by.epam.web.command.PageName;
-import by.epam.web.command.RedirectName;
-import by.epam.web.command.SessionRequestContent;
+import by.epam.web.command.*;
 import by.epam.web.entity.User;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
@@ -25,22 +21,22 @@ public class UpdateUserCommand implements ActionCommand {
         String repeatPass = sessionRequestContent.getParameter(AttributeName.REPEATED_PASSWORD);
         String lastName = sessionRequestContent.getParameter(AttributeName.LAST_NAME);
         String firstName = sessionRequestContent.getParameter(AttributeName.FIRST_NAME);
-        User user = (User)sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER);
+        User user = (User) sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER);
         UserService userService = UserService.getINSTANCE();
         logger.info(user.getEmail());
         try {
-            Map<String,Object> map = userService.updateUser(user.getId(),user.getEmail(),pass,repeatPass,firstName,lastName);
-            if(map.containsKey(AttributeName.FLAG)){
+            Map<String, Object> map = userService.updateUser(user.getId(), user.getEmail(), pass, repeatPass, firstName, lastName);
+            if (map.containsKey(AttributeName.FLAG)) {
                 sessionRequestContent.setAttribute(map);
-            }else {
+            } else {
                 user.setLastName(lastName);
                 user.setFirstName(firstName);
-                sessionRequestContent.setSessionAttribute(AttributeName.CURRENT_USER,user);
+                sessionRequestContent.setSessionAttribute(AttributeName.CURRENT_USER, user);
                 sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.ACCOUNT);
             }
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Update error",e);
+            throw new CommandException("Update error", e);
         }
         return page;
     }

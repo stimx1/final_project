@@ -16,27 +16,29 @@ public class BoughtSubscriptionService {
     private static final BoughtSubscriptionService INSTANCE = new BoughtSubscriptionService();
     private BoughtSubscriptionRepository repository = new BoughtSubscriptionRepository();
 
-    private BoughtSubscriptionService(){}
+    private BoughtSubscriptionService() {
+    }
 
     public static BoughtSubscriptionService getInstance() {
         return INSTANCE;
     }
 
     public void addBoughtSubscription(int subscriptionId, int userId, int price, LocalDate startDay, LocalDate endDay) throws ServiceException {
-        BoughtSubscription subscription = new BoughtSubscription(subscriptionId,userId,price,startDay,endDay);
+        BoughtSubscription subscription = new BoughtSubscription(subscriptionId, userId, price, startDay, endDay);
         try {
             repository.addEntity(subscription);
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Bought subscription add error",e);
+            throw new ServiceException("Bought subscription add error", e);
         }
     }
+
     public List<BoughtSubscription> findByUserId(int userId) throws ServiceException {
         try {
             return repository.query(new BoughtSubscriptionUserIdSpecification(userId));
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Bought subscription find error",e);
+            throw new ServiceException("Bought subscription find error", e);
         }
     }
 }

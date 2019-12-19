@@ -20,30 +20,30 @@ public class AssignedDietRepository implements EntityRepository<AssignedDiet> {
     @Override
     public void addEntity(AssignedDiet assignedDiet) throws EntityRepositoryException {
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_DIET)){
-            statement.setInt(1,assignedDiet.getDietId());
-            statement.setInt(2,assignedDiet.getUserId());
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_DIET)) {
+            statement.setInt(1, assignedDiet.getDietId());
+            statement.setInt(2, assignedDiet.getUserId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw  new EntityRepositoryException("Assigned diet add error",e);
+            throw new EntityRepositoryException("Assigned diet add error", e);
         }
     }
 
     @Override
     public void removeEntity(AssignedDiet assignedDiet) throws EntityRepositoryException {
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_DIET)){
-            statement.setInt(1,assignedDiet.getId());
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_DIET)) {
+            statement.setInt(1, assignedDiet.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Assigned diet remove error",e);
+            throw new EntityRepositoryException("Assigned diet remove error", e);
         }
     }
 
     @Override
-    public void updateEntity(AssignedDiet assignedDiet){
+    public void updateEntity(AssignedDiet assignedDiet) {
     }
 
     @Override

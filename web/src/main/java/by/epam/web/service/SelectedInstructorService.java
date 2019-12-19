@@ -16,9 +16,10 @@ public class SelectedInstructorService {
     private static final SelectedInstructorService INSTANCE = new SelectedInstructorService();
     private SelectedInstructorRepository repository = new SelectedInstructorRepository();
 
-    private SelectedInstructorService(){}
+    private SelectedInstructorService() {
+    }
 
-    public static SelectedInstructorService getInstance(){
+    public static SelectedInstructorService getInstance() {
         return INSTANCE;
     }
 
@@ -27,10 +28,10 @@ public class SelectedInstructorService {
         try {
             List<SelectedInstructor> list = findByUserId(userId);
             Iterator<SelectedInstructor> iterator = list.iterator();
-            if(iterator.hasNext()) {
+            if (iterator.hasNext()) {
                 selectedInstructor = iterator.next();
-            }else {
-                add(userId,instructorId);
+            } else {
+                add(userId, instructorId);
             }
             selectedInstructor.setInstructorId(instructorId);
             selectedInstructor.setUserId(userId);
@@ -42,10 +43,10 @@ public class SelectedInstructorService {
     }
 
     public void add(int userId, int instructorId) throws ServiceException {
-        SelectedInstructor instructor = new SelectedInstructor(userId,instructorId);
+        SelectedInstructor instructor = new SelectedInstructor(userId, instructorId);
         try {
             repository.addEntity(instructor);
-        } catch (EntityRepositoryException e){
+        } catch (EntityRepositoryException e) {
             logger.catching(e);
             throw new ServiceException("Add error");
         }

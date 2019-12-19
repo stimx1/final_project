@@ -2,14 +2,14 @@ package by.epam.web.entity;
 
 import java.time.LocalDate;
 
-public class BoughtSubscription extends Entity{
+public class BoughtSubscription extends Entity {
     private int subscriptionId;
     private int userId;
     private int price;
     private LocalDate startDay;
     private LocalDate endDay;
 
-    public BoughtSubscription(){
+    public BoughtSubscription() {
     }
 
     public BoughtSubscription(int subscriptionId, int userId, int price, LocalDate startDay, LocalDate endDay) {

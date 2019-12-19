@@ -27,7 +27,7 @@ public class DietRepository implements EntityRepository<Diet> {
              PreparedStatement statement = connection.prepareStatement(SQL_INSERT_DIET)) {
             statement.setString(1, diet.getName());
             statement.setString(2, diet.getDescription());
-            statement.setString(3,diet.getState().toString().toLowerCase());
+            statement.setString(3, diet.getState().toString().toLowerCase());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
@@ -49,16 +49,16 @@ public class DietRepository implements EntityRepository<Diet> {
 
     @Override
     public void updateEntity(Diet diet) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_DIET)){
-            statement.setString(1,diet.getName());
-            statement.setString(2,diet.getDescription());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_DIET)) {
+            statement.setString(1, diet.getName());
+            statement.setString(2, diet.getDescription());
             statement.setString(3, diet.getState().toString().toLowerCase());
-            statement.setInt(4,diet.getId());
+            statement.setInt(4, diet.getId());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Update error",e);
+            throw new EntityRepositoryException("Update error", e);
         }
     }
 

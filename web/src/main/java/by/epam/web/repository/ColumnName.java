@@ -10,11 +10,11 @@ public class ColumnName {
     public static final String NAME = "name";
     public static final String DESCRIPTION = "description";
     public static final String INFO = "info";
-    public static final String END_DAY= "end_day";
+    public static final String END_DAY = "end_day";
     public static final String START_DAY = "start_day";
     public static final String PRICE = "price";
-    public static final String DURATION= "duration";
-    public static final String AMOUNT= "amount";
+    public static final String DURATION = "duration";
+    public static final String AMOUNT = "amount";
     public static final String USER_ID = "user_id";
     public static final String INSTRUCTOR_ID = "instructor_id";
     public static final String STATE = "state";

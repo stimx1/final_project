@@ -27,23 +27,23 @@ public class LoginCommand implements ActionCommand {
         String pass = sessionRequestContent.getParameter(AttributeName.PASSWORD);
         UserService userService = UserService.getINSTANCE();
         try {
-            List<User> userList = userService.findUserByEmailAndPassword(email,pass);
+            List<User> userList = userService.findUserByEmailAndPassword(email, pass);
             Iterator<User> iterator = userList.iterator();
-            if(iterator.hasNext()){
+            if (iterator.hasNext()) {
                 User user = iterator.next();
                 page = ConfigurationManager.getProperty(PageName.SERVICES);
                 logger.info(user.getRole());
                 sessionRequestContent.setSessionAttribute(AttributeName.CURRENT_USER, user);
                 SubscriptionService subscriptionService = SubscriptionService.getInstance();
                 List<Subscription> subscriptions = subscriptionService.findSubscription();
-                sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS,subscriptions);
-            }else {
+                sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS, subscriptions);
+            } else {
                 sessionRequestContent.setAttribute(AttributeName.LOGIN_ERROR, true);
                 page = ConfigurationManager.getProperty(PageName.LOGIN);
             }
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Login error",e);
+            throw new CommandException("Login error", e);
         }
         return page;
     }

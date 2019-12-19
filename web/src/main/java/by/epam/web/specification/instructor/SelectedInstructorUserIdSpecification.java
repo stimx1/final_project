@@ -14,15 +14,16 @@ public class SelectedInstructorUserIdSpecification implements EntitySpecificatio
     private static final String SQL_SELECT_INSTRUCTOR = "SELECT id, instructor_id, user_id FROM selected_instructor WHERE user_id = ?;";
     private int userId;
 
-    public SelectedInstructorUserIdSpecification(int userId){
+    public SelectedInstructorUserIdSpecification(int userId) {
         this.userId = userId;
     }
+
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-            statement.setInt(1,userId);
+            statement.setInt(1, userId);
         } catch (SQLException e) {
             logger.catching(e);
         }

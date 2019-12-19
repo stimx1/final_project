@@ -11,7 +11,7 @@ public class ChangeLocaleCommand implements ActionCommand {
     public String execute(SessionRequestContent sessionRequestContent) {
         String page = ConfigurationManager.getProperty(PageName.INDEX);
         String locale = sessionRequestContent.getParameter(AttributeName.LANGUAGE);
-        sessionRequestContent.setSessionAttribute(AttributeName.LOCALE,locale);
+        sessionRequestContent.setSessionAttribute(AttributeName.LOCALE, locale);
         return page;
     }
 }

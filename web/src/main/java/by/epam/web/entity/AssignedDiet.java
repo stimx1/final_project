@@ -4,7 +4,8 @@ public class AssignedDiet extends Entity {
     private int userId;
     private int dietId;
 
-    public AssignedDiet(){}
+    public AssignedDiet() {
+    }
 
     public AssignedDiet(int userId, int dietId) {
         this.userId = userId;

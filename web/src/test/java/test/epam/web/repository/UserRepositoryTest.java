@@ -36,7 +36,7 @@ public class UserRepositoryTest {
     @AfterTest
     void afterTest() throws SQLException {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()){
+        while (drivers.hasMoreElements()) {
             DriverManager.deregisterDriver(drivers.nextElement());
         }
     }
@@ -46,28 +46,28 @@ public class UserRepositoryTest {
         String url = DBConfigurationManger.getProperty(HOST);
         String user = DBConfigurationManger.getProperty(LOGIN);
         String pass = DBConfigurationManger.getProperty(PASSWORD);
-        connection = DriverManager.getConnection(url,user,pass);
+        connection = DriverManager.getConnection(url, user, pass);
     }
 
     @AfterClass
     void afterClass() throws SQLException {
-        if(resultSet !=null){
+        if (resultSet != null) {
             resultSet.close();
         }
-        if(statement != null){
+        if (statement != null) {
             statement.close();
         }
-        if(connection != null){
+        if (connection != null) {
             connection.close();
         }
     }
 
     @Test
     public void testAddEntity() throws EntityRepositoryException, SQLException {
-        User actual = new User("1234","gmail@gmail.com", "Last name", "First name", UserRole.USER);
+        User actual = new User("1234", "gmail@gmail.com", "Last name", "First name", UserRole.USER);
         userRepository.addEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"gmail@gmail.com");
+        statement.setString(1, "gmail@gmail.com");
         resultSet = statement.executeQuery();
         User expected = new User();
         while (resultSet.next()) {
@@ -79,15 +79,15 @@ public class UserRepositoryTest {
             expected.setRole(UserRole.valueOf(resultSet.getString(ColumnName.ROLE).toUpperCase()));
         }
         statement = connection.prepareStatement(SQL_DELETE_USER);
-        statement.setInt(1,expected.getId());
+        statement.setInt(1, expected.getId());
         statement.execute();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testRemoveEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"mail@gmail.com");
+        statement.setString(1, "mail@gmail.com");
         resultSet = statement.executeQuery();
         User user = new User();
         while (resultSet.next()) {
@@ -100,7 +100,7 @@ public class UserRepositoryTest {
         }
         userRepository.removeEntity(user);
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"mail@gmail.com");
+        statement.setString(1, "mail@gmail.com");
         resultSet = statement.executeQuery();
         User actual = new User();
         while (resultSet.next()) {
@@ -113,7 +113,7 @@ public class UserRepositoryTest {
         }
         userRepository.addEntity(user);
         User expected = new User();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class UserRepositoryTest {
         List<User> actual = userRepository.query(new UserEmailSpecification("mail@gmail.com"));
         List<User> expected = new ArrayList<>();
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"mail@gmail.com");
+        statement.setString(1, "mail@gmail.com");
         resultSet = statement.executeQuery();
         User user = new User();
         while (resultSet.next()) {
@@ -133,13 +133,13 @@ public class UserRepositoryTest {
             user.setRole(UserRole.valueOf(resultSet.getString(ColumnName.ROLE).toUpperCase()));
             expected.add(user);
         }
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testUpdateEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"mail@gmail.com");
+        statement.setString(1, "mail@gmail.com");
         resultSet = statement.executeQuery();
         User actual = new User();
         while (resultSet.next()) {
@@ -154,7 +154,7 @@ public class UserRepositoryTest {
         actual.setFirstName("first" + new Random().nextInt(10000));
         userRepository.updateEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_USER);
-        statement.setString(1,"mail@gmail.com");
+        statement.setString(1, "mail@gmail.com");
         resultSet = statement.executeQuery();
         User expected = new User();
         while (resultSet.next()) {
@@ -165,6 +165,6 @@ public class UserRepositoryTest {
             expected.setEmail(resultSet.getString(ColumnName.EMAIL));
             expected.setRole(UserRole.valueOf(resultSet.getString(ColumnName.ROLE).toUpperCase()));
         }
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 }

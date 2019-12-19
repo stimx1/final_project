@@ -32,7 +32,7 @@ public class InstructorRepositoryTest {
     @AfterTest
     void afterTest() throws SQLException {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()){
+        while (drivers.hasMoreElements()) {
             DriverManager.deregisterDriver(drivers.nextElement());
         }
     }
@@ -42,28 +42,28 @@ public class InstructorRepositoryTest {
         String url = DBConfigurationManger.getProperty(HOST);
         String user = DBConfigurationManger.getProperty(LOGIN);
         String pass = DBConfigurationManger.getProperty(PASSWORD);
-        connection = DriverManager.getConnection(url,user,pass);
+        connection = DriverManager.getConnection(url, user, pass);
     }
 
     @AfterClass
     void afterClass() throws SQLException {
-        if(resultSet !=null){
+        if (resultSet != null) {
             resultSet.close();
         }
-        if(statement != null){
+        if (statement != null) {
             statement.close();
         }
-        if(connection != null){
+        if (connection != null) {
             connection.close();
         }
     }
 
     @Test
     public void testAddEntity() throws EntityRepositoryException, SQLException {
-        Instructor actual = new Instructor("first", "last","info");
+        Instructor actual = new Instructor("first", "last", "info");
         repository.addEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-        statement.setString(1,"last");
+        statement.setString(1, "last");
         resultSet = statement.executeQuery();
         Instructor expected = new Instructor();
         while (resultSet.next()) {
@@ -73,15 +73,15 @@ public class InstructorRepositoryTest {
             expected.setInfo(resultSet.getString(ColumnName.INFO));
         }
         statement = connection.prepareStatement(SQL_DELETE_INSTRUCTOR);
-        statement.setInt(1,expected.getId());
+        statement.setInt(1, expected.getId());
         statement.execute();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testRemoveEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Instructor instructor = new Instructor();
         while (resultSet.next()) {
@@ -92,7 +92,7 @@ public class InstructorRepositoryTest {
         }
         repository.removeEntity(instructor);
         statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Instructor actual = new Instructor();
         while (resultSet.next()) {
@@ -103,13 +103,13 @@ public class InstructorRepositoryTest {
         }
         repository.addEntity(instructor);
         Instructor expected = new Instructor();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testUpdateEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Instructor actual = new Instructor();
         while (resultSet.next()) {
@@ -121,7 +121,7 @@ public class InstructorRepositoryTest {
         actual.setInfo("info" + new Random().nextInt(1000));
         repository.updateEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_INSTRUCTOR);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Instructor expected = new Instructor();
         while (resultSet.next()) {
@@ -130,6 +130,6 @@ public class InstructorRepositoryTest {
             expected.setLastName(resultSet.getString(ColumnName.LAST_NAME));
             expected.setInfo(resultSet.getString(ColumnName.INFO));
         }
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 }

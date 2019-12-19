@@ -26,7 +26,7 @@ public class GetUsersCommand implements ActionCommand {
             list = service.findUsers();
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Users get error",e);
+            throw new CommandException("Users get error", e);
         }
         sessionRequestContent.setAttribute(AttributeName.USER_LIST, list);
 

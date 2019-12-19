@@ -18,10 +18,11 @@ import java.util.List;
 
 public class GetInstructorsCommand implements ActionCommand {
     private static final Logger logger = LogManager.getLogger(GetInstructorsCommand.class);
+
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.INSTRUCTORS);
-        User user = (User)sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER);
+        User user = (User) sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER);
         int userId = user.getId();
         InstructorService service = InstructorService.getInstance();
         List<Instructor> instructors = null;
@@ -35,7 +36,7 @@ public class GetInstructorsCommand implements ActionCommand {
         }
         sessionRequestContent.setAttribute(AttributeName.INSTRUCTORS, instructors);
         Iterator<Instructor> iterator = selectedInstructor.iterator();
-        if(iterator.hasNext()) {
+        if (iterator.hasNext()) {
             int selectedId = iterator.next().getId();
             logger.info(selectedId);
             sessionRequestContent.setAttribute("selectedId", selectedId);

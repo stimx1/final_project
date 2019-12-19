@@ -16,6 +16,7 @@ import java.util.List;
 
 public class GetDietsCommand implements ActionCommand {
     private static final Logger logger = LogManager.getLogger(GetDietsCommand.class);
+
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.DIET);
@@ -25,9 +26,9 @@ public class GetDietsCommand implements ActionCommand {
             dietList = dietService.findDiets();
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Admin panel error",e);
+            throw new CommandException("Admin panel error", e);
         }
-        sessionRequestContent.setAttribute(AttributeName.DIET_LIST,dietList);
+        sessionRequestContent.setAttribute(AttributeName.DIET_LIST, dietList);
         return page;
     }
 }

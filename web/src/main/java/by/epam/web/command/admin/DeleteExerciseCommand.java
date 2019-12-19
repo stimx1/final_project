@@ -1,10 +1,6 @@
 package by.epam.web.command.admin;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.command.AttributeName;
-import by.epam.web.command.PageName;
-import by.epam.web.command.RedirectName;
-import by.epam.web.command.SessionRequestContent;
+import by.epam.web.command.*;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
@@ -23,11 +19,11 @@ public class DeleteExerciseCommand implements ActionCommand {
         String name = sessionRequestContent.getParameter(AttributeName.EXERCISE_NAME);
         String description = sessionRequestContent.getParameter(AttributeName.EXERCISE_DESCRIPTION);
         try {
-            service.deleteExercise(id,name,description);
+            service.deleteExercise(id, name, description);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.EXERCISES);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Exercise delete error",e);
+            throw new CommandException("Exercise delete error", e);
         }
         return page;
     }

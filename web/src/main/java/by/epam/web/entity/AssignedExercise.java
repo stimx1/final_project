@@ -4,7 +4,8 @@ public class AssignedExercise extends Entity {
     private int userId;
     private int exerciseId;
 
-    public AssignedExercise(){}
+    public AssignedExercise() {
+    }
 
     public AssignedExercise(int userId, int exerciseId) {
         this.userId = userId;

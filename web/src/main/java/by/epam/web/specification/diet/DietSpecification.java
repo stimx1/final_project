@@ -12,10 +12,11 @@ import java.sql.SQLException;
 public class DietSpecification implements EntitySpecification {
     private static final Logger logger = LogManager.getLogger(DietSpecification.class);
     private static final String SQL_SELECT_DIET = "SELECT id, name, description,state FROM diet;";
+
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_DIET);
         } catch (SQLException e) {
             logger.catching(e);

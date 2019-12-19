@@ -16,6 +16,7 @@ import java.util.List;
 
 public class GetExercisesCommand implements ActionCommand {
     private static final Logger logger = LogManager.getLogger(GetExercisesCommand.class);
+
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.EXERCISE);
@@ -25,9 +26,9 @@ public class GetExercisesCommand implements ActionCommand {
             exerciseList = exerciseService.findExercises();
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Admin panel error",e);
+            throw new CommandException("Admin panel error", e);
         }
-        sessionRequestContent.setAttribute(AttributeName.EXERCISE_LIST,exerciseList);
+        sessionRequestContent.setAttribute(AttributeName.EXERCISE_LIST, exerciseList);
         return page;
     }
 }

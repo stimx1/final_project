@@ -26,10 +26,10 @@ public class RegistrationCommand implements ActionCommand {
         String firstName = sessionRequestContent.getParameter(AttributeName.FIRST_NAME);
         UserService userService = UserService.getINSTANCE();
         try {
-            Map<String,Object> attributeMap = userService.register(email,pass,repeatPass,firstName,lastName);
-            if(!attributeMap.containsKey(AttributeName.FLAG)) {
+            Map<String, Object> attributeMap = userService.register(email, pass, repeatPass, firstName, lastName);
+            if (!attributeMap.containsKey(AttributeName.FLAG)) {
                 page = ConfigurationManager.getProperty(PageName.INDEX);
-            }else {
+            } else {
                 logger.info(attributeMap);
                 sessionRequestContent.setAttribute(attributeMap);
                 page = ConfigurationManager.getProperty(PageName.LOGIN);

@@ -24,16 +24,16 @@ public class GetAssignedDietCommand implements ActionCommand {
         String page = ConfigurationManager.getProperty(PageName.ASSIGNED_DIET);
         DietService dietService = DietService.getInstance();
         int id;
-        User user = (User)(sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
-        if(user.getRole() == UserRole.ADMIN){
+        User user = (User) (sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
+        if (user.getRole() == UserRole.ADMIN) {
             String userId = sessionRequestContent.getParameter(AttributeName.USER_ID);
-            if(userId==null){
-                id = (Integer)(sessionRequestContent.getSessionAttribute(AttributeName.USER_ID));
-            }else {
+            if (userId == null) {
+                id = (Integer) (sessionRequestContent.getSessionAttribute(AttributeName.USER_ID));
+            } else {
                 id = Integer.parseInt(userId);
                 sessionRequestContent.setSessionAttribute(AttributeName.USER_ID, id);
             }
-        }else {
+        } else {
             id = user.getId();
         }
         List<Diet> assignedDietList;
@@ -45,8 +45,8 @@ public class GetAssignedDietCommand implements ActionCommand {
             logger.catching(e);
             throw new CommandException("Assignment get error");
         }
-        sessionRequestContent.setAttribute(AttributeName.ASSIGNED_DIET_LIST,assignedDietList);
-        sessionRequestContent.setAttribute(AttributeName.DIET_LIST,dietList);
+        sessionRequestContent.setAttribute(AttributeName.ASSIGNED_DIET_LIST, assignedDietList);
+        sessionRequestContent.setAttribute(AttributeName.DIET_LIST, dietList);
         return page;
     }
 }

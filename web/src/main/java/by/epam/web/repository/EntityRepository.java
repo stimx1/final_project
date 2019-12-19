@@ -6,9 +6,11 @@ import by.epam.web.specification.EntitySpecification;
 
 import java.util.List;
 
-public interface EntityRepository <E extends Entity>{
+public interface EntityRepository<E extends Entity> {
     void addEntity(E e) throws EntityRepositoryException;
+
     void removeEntity(E e) throws EntityRepositoryException;
+
     void updateEntity(E e) throws EntityRepositoryException;
 
     List<E> query(EntitySpecification specification) throws EntityRepositoryException;

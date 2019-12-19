@@ -16,7 +16,7 @@ public class UserSpecification implements EntitySpecification {
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_USER);
         } catch (SQLException e) {
             logger.catching(e);

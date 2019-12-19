@@ -1,10 +1,6 @@
 package by.epam.web.command.admin;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.command.AttributeName;
-import by.epam.web.command.PageName;
-import by.epam.web.command.RedirectName;
-import by.epam.web.command.SessionRequestContent;
+import by.epam.web.command.*;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
@@ -23,11 +19,11 @@ public class AddSubscriptionCommand implements ActionCommand {
         int price = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_PRICE));
         int duration = Integer.parseInt(sessionRequestContent.getParameter(AttributeName.SUBSCRIPTION_DURATION));
         try {
-            subscriptionService.addSubscription(name,price,duration);
+            subscriptionService.addSubscription(name, price, duration);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.SERVICES);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Subscription add error",e);
+            throw new CommandException("Subscription add error", e);
         }
         return page;
     }

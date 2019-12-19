@@ -9,7 +9,7 @@ public class Exercise extends Entity {
         this.description = description;
     }
 
-    public Exercise(){
+    public Exercise() {
     }
 
     public Exercise(int id, State state, String name, String description) {

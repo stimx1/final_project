@@ -20,52 +20,52 @@ public class SubscriptionRepository implements EntityRepository<Subscription> {
 
     @Override
     public void addEntity(Subscription subscription) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT_SUBSCRIPTION)){
-            statement.setString(1,subscription.getName());
-            statement.setInt(2,subscription.getPrice());
-            statement.setInt(3,subscription.getDuration());
-            statement.setString(4,subscription.getState().toString().toLowerCase());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_SUBSCRIPTION)) {
+            statement.setString(1, subscription.getName());
+            statement.setInt(2, subscription.getPrice());
+            statement.setInt(3, subscription.getDuration());
+            statement.setString(4, subscription.getState().toString().toLowerCase());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Subscription add error",e);
+            throw new EntityRepositoryException("Subscription add error", e);
         }
     }
 
     @Override
     public void removeEntity(Subscription subscription) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_DELETE_SUBSCRIPTION)){
-            statement.setInt(1,subscription.getId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_SUBSCRIPTION)) {
+            statement.setInt(1, subscription.getId());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Subscription remove error",e);
+            throw new EntityRepositoryException("Subscription remove error", e);
         }
     }
 
     @Override
     public void updateEntity(Subscription subscription) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_SUBSCRIPTION)){
-            statement.setString(1,subscription.getName());
-            statement.setInt(2,subscription.getPrice());
-            statement.setInt(3,subscription.getDuration());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_SUBSCRIPTION)) {
+            statement.setString(1, subscription.getName());
+            statement.setInt(2, subscription.getPrice());
+            statement.setInt(3, subscription.getDuration());
             statement.setString(4, subscription.getState().toString().toLowerCase());
-            statement.setInt(5,subscription.getId());
+            statement.setInt(5, subscription.getId());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Update error",e);
+            throw new EntityRepositoryException("Update error", e);
         }
     }
 
     @Override
     public List<Subscription> query(EntitySpecification specification) throws EntityRepositoryException {
         List<Subscription> subscriptions = new LinkedList<>();
-        try(PreparedStatement statement = specification.specified();
-            ResultSet resultSet = statement.executeQuery()) {
+        try (PreparedStatement statement = specification.specified();
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 Subscription subscription = new Subscription();
                 subscription.setId(resultSet.getInt(ColumnName.ID));
@@ -75,10 +75,10 @@ public class SubscriptionRepository implements EntityRepository<Subscription> {
                 subscription.setState(State.valueOf(resultSet.getString(ColumnName.STATE).toUpperCase()));
                 Date startDay = resultSet.getDate(ColumnName.START_DAY);
                 Date endDay = resultSet.getDate(ColumnName.END_DAY);
-                if(startDay != null) {
+                if (startDay != null) {
                     subscription.setStartDay(startDay.toLocalDate());
                 }
-                if(endDay !=null){
+                if (endDay != null) {
                     subscription.setEndDay(endDay.toLocalDate());
                 }
                 subscriptions.add(subscription);
@@ -86,7 +86,7 @@ public class SubscriptionRepository implements EntityRepository<Subscription> {
             logger.info(subscriptions);
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Incorrect query error",e);
+            throw new EntityRepositoryException("Incorrect query error", e);
         }
         return subscriptions;
     }

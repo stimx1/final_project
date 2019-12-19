@@ -20,25 +20,25 @@ public class AssignedExerciseRepository implements EntityRepository<AssignedExer
     @Override
     public void addEntity(AssignedExercise assignedExercise) throws EntityRepositoryException {
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_EXERCISE)){
-            statement.setInt(1,assignedExercise.getExerciseId());
-            statement.setInt(2,assignedExercise.getUserId());
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_EXERCISE)) {
+            statement.setInt(1, assignedExercise.getExerciseId());
+            statement.setInt(2, assignedExercise.getUserId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Assigned exercise remove error",e);
+            throw new EntityRepositoryException("Assigned exercise remove error", e);
         }
     }
 
     @Override
     public void removeEntity(AssignedExercise assignedExercise) throws EntityRepositoryException {
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_EXERCISE)){
-            statement.setInt(1,assignedExercise.getId());
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_EXERCISE)) {
+            statement.setInt(1, assignedExercise.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Assigned exercise remove error",e);
+            throw new EntityRepositoryException("Assigned exercise remove error", e);
         }
     }
 

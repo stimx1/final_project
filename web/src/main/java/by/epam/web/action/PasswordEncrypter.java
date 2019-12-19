@@ -4,10 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 
 public class PasswordEncrypter {
-    public static String encrypt(String enterPass){
+    public static String encrypt(String enterPass) {
         byte[] bytes = null;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
@@ -16,7 +15,7 @@ public class PasswordEncrypter {
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        BigInteger bigInteger = new BigInteger(1,bytes);
+        BigInteger bigInteger = new BigInteger(1, bytes);
         String password = bigInteger.toString(16);
         return password;
     }

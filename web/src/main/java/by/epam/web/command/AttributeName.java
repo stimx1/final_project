@@ -21,8 +21,8 @@ public class AttributeName {
     public static final String EXERCISE_LIST = "exerciseList";
     public static final String INSTRUCTORS = "instructors";
     public static final String SUBSCRIPTIONS = "subscriptions";
-    public static final String SUBSCRIPTION_ID ="subscriptionId";
-    public static final String DIET_NAME ="dietName";
+    public static final String SUBSCRIPTION_ID = "subscriptionId";
+    public static final String DIET_NAME = "dietName";
     public static final String DIET_DESCRIPTION = "dietDescription";
     public static final String EXERCISE_NAME = "exerciseName";
     public static final String EXERCISE_DESCRIPTION = "exerciseDescription";

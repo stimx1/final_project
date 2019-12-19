@@ -20,28 +20,29 @@ import java.util.List;
 
 public class UserAccountCommand implements ActionCommand {
     private static final Logger logger = LogManager.getLogger(UserAccountCommand.class);
+
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.ACCOUNT);
-        User user = (User)(sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
+        User user = (User) (sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
         int userId = user.getId();
         AccountService accountService = AccountService.getInstance();
         SubscriptionService subscriptionService = SubscriptionService.getInstance();
         try {
             List<UserBalance> balanceList = accountService.findByUserId(userId);
             Iterator<UserBalance> iterator = balanceList.iterator();
-            if(iterator.hasNext()){
+            if (iterator.hasNext()) {
                 int amount = iterator.next().getAmount();
-                sessionRequestContent.setAttribute(AttributeName.AMOUNT,amount);
-            }else {
-                sessionRequestContent.setAttribute(AttributeName.AMOUNT,0);
+                sessionRequestContent.setAttribute(AttributeName.AMOUNT, amount);
+            } else {
+                sessionRequestContent.setAttribute(AttributeName.AMOUNT, 0);
             }
             List<Subscription> subscriptions = subscriptionService.findBoughtSubscriptionByUserId(userId);
-            sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS,subscriptions);
+            sessionRequestContent.setAttribute(AttributeName.SUBSCRIPTIONS, subscriptions);
             logger.info(subscriptions);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Balance not found",e);
+            throw new CommandException("Balance not found", e);
         }
         return page;
     }

@@ -19,50 +19,51 @@ public class SelectedInstructorRepository implements EntityRepository<SelectedIn
     private static final String SQL_INSERT_INSTRUCTOR = "INSERT INTO selected_instructor (instructor_id,user_id) VALUES (?,?)";
     private static final String SQL_DELETE_INSTRUCTOR = "DELETE FROM selected_instructor WHERE id = ? ;";
     private static final String SQL_UPDATE_INSTRUCTOR = "UPDATE selected_instructor SET instructor_id = ?, user_id = ? WHERE id = ? ;";
+
     @Override
     public void addEntity(SelectedInstructor selectedInstructor) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT_INSTRUCTOR)) {
-            statement.setInt(1,selectedInstructor.getInstructorId());
-            statement.setInt(2,selectedInstructor.getUserId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_INSTRUCTOR)) {
+            statement.setInt(1, selectedInstructor.getInstructorId());
+            statement.setInt(2, selectedInstructor.getUserId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Selected instructor add error",e);
+            throw new EntityRepositoryException("Selected instructor add error", e);
         }
     }
 
     @Override
     public void removeEntity(SelectedInstructor selectedInstructor) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_DELETE_INSTRUCTOR)){
-            statement.setInt(1,selectedInstructor.getId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_INSTRUCTOR)) {
+            statement.setInt(1, selectedInstructor.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Selected instructor remove error",e);
+            throw new EntityRepositoryException("Selected instructor remove error", e);
         }
     }
 
     @Override
     public void updateEntity(SelectedInstructor selectedInstructor) throws EntityRepositoryException {
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_INSTRUCTOR)){
-            statement.setInt(1,selectedInstructor.getInstructorId());
-            statement.setInt(2,selectedInstructor.getUserId());
-            statement.setInt(3,selectedInstructor.getId());
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_INSTRUCTOR)) {
+            statement.setInt(1, selectedInstructor.getInstructorId());
+            statement.setInt(2, selectedInstructor.getUserId());
+            statement.setInt(3, selectedInstructor.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Selected instructor update error",e);
+            throw new EntityRepositoryException("Selected instructor update error", e);
         }
     }
 
     @Override
     public List<SelectedInstructor> query(EntitySpecification specification) throws EntityRepositoryException {
         List<SelectedInstructor> instructors = new LinkedList<>();
-        try(PreparedStatement statement = specification.specified();
-        ResultSet resultSet = statement.executeQuery()) {
+        try (PreparedStatement statement = specification.specified();
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 SelectedInstructor instructor = new SelectedInstructor();
                 instructor.setId(resultSet.getInt(ColumnName.ID));
@@ -72,7 +73,7 @@ public class SelectedInstructorRepository implements EntityRepository<SelectedIn
             }
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Incorrect query error",e);
+            throw new EntityRepositoryException("Incorrect query error", e);
         }
         return instructors;
     }

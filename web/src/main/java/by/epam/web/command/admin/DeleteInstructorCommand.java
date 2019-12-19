@@ -1,10 +1,6 @@
 package by.epam.web.command.admin;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.command.AttributeName;
-import by.epam.web.command.PageName;
-import by.epam.web.command.RedirectName;
-import by.epam.web.command.SessionRequestContent;
+import by.epam.web.command.*;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
@@ -24,11 +20,11 @@ public class DeleteInstructorCommand implements ActionCommand {
         String info = sessionRequestContent.getParameter(AttributeName.INFO);
         InstructorService service = InstructorService.getInstance();
         try {
-            service.deleteInstructor(id,firstName,lastName,info);
+            service.deleteInstructor(id, firstName, lastName, info);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.INSTRUCTORS);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Instructor delete error",e);
+            throw new CommandException("Instructor delete error", e);
         }
         return page;
     }

@@ -23,10 +23,10 @@ public class CoachingRoomCommand implements ActionCommand {
         InstructorService instructorService = InstructorService.getInstance();
         try {
             List<Instructor> instructors = instructorService.findSelectedInstructor();
-            sessionRequestContent.setAttribute(AttributeName.INSTRUCTORS,instructors);
+            sessionRequestContent.setAttribute(AttributeName.INSTRUCTORS, instructors);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Find error",e);
+            throw new CommandException("Find error", e);
         }
         return page;
     }

@@ -9,7 +9,7 @@ public class Diet extends Entity {
         this.description = description;
     }
 
-    public Diet(){
+    public Diet() {
     }
 
     public Diet(int id, State state, String name, String description) {

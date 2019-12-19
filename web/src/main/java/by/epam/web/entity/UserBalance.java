@@ -4,7 +4,8 @@ public class UserBalance extends Entity {
     private int userId;
     private int amount;
 
-    public UserBalance(){}
+    public UserBalance() {
+    }
 
     public UserBalance(int userId, int amount) {
         this.userId = userId;

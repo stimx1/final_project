@@ -18,21 +18,22 @@ import java.util.List;
 
 public class GetAssignedExerciseCommand implements ActionCommand {
     private static final Logger logger = LogManager.getLogger(GetAssignedExerciseCommand.class);
+
     @Override
     public String execute(SessionRequestContent sessionRequestContent) throws CommandException {
         String page = ConfigurationManager.getProperty(PageName.ASSIGNED_EXERCISE);
         ExerciseService exerciseService = ExerciseService.getInstance();
         int id;
-        User user = (User)(sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
-        if(user.getRole() == UserRole.ADMIN){
+        User user = (User) (sessionRequestContent.getSessionAttribute(AttributeName.CURRENT_USER));
+        if (user.getRole() == UserRole.ADMIN) {
             String userId = sessionRequestContent.getParameter(AttributeName.USER_ID);
-            if(userId==null){
-                id = (Integer)(sessionRequestContent.getSessionAttribute(AttributeName.USER_ID));
-            }else {
+            if (userId == null) {
+                id = (Integer) (sessionRequestContent.getSessionAttribute(AttributeName.USER_ID));
+            } else {
                 id = Integer.parseInt(userId);
                 sessionRequestContent.setSessionAttribute(AttributeName.USER_ID, id);
             }
-        }else {
+        } else {
             id = user.getId();
         }
         List<Exercise> assignedExerciseList;
@@ -44,8 +45,8 @@ public class GetAssignedExerciseCommand implements ActionCommand {
             logger.catching(e);
             throw new CommandException("Assignment get error");
         }
-        sessionRequestContent.setAttribute(AttributeName.ASSIGNED_EXERCISE_LIST,assignedExerciseList);
-        sessionRequestContent.setAttribute(AttributeName.EXERCISE_LIST,exerciseList);
+        sessionRequestContent.setAttribute(AttributeName.ASSIGNED_EXERCISE_LIST, assignedExerciseList);
+        sessionRequestContent.setAttribute(AttributeName.EXERCISE_LIST, exerciseList);
         return page;
     }
 }

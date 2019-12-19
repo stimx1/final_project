@@ -8,7 +8,10 @@ import by.epam.web.specification.EntitySpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,44 +23,44 @@ public class InstructorRepository implements EntityRepository<Instructor> {
 
     @Override
     public void addEntity(Instructor instructor) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT_INSTRUCTOR)){
-            statement.setString(1,instructor.getFirstName());
-            statement.setString(2,instructor.getLastName());
-            statement.setString(3,instructor.getInfo());
-            statement.setString(4,instructor.getState().toString().toLowerCase());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_INSTRUCTOR)) {
+            statement.setString(1, instructor.getFirstName());
+            statement.setString(2, instructor.getLastName());
+            statement.setString(3, instructor.getInfo());
+            statement.setString(4, instructor.getState().toString().toLowerCase());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Instructor add error",e);
+            throw new EntityRepositoryException("Instructor add error", e);
         }
     }
 
     @Override
     public void removeEntity(Instructor instructor) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_DELETE_INSTRUCTOR)) {
-            statement.setInt(1,instructor.getId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_INSTRUCTOR)) {
+            statement.setInt(1, instructor.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Instructor remove error",e);
+            throw new EntityRepositoryException("Instructor remove error", e);
         }
     }
 
     @Override
     public void updateEntity(Instructor instructor) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_INSTRUCTOR)){
-            statement.setString(1,instructor.getFirstName());
-            statement.setString(2,instructor.getLastName());
-            statement.setString(3,instructor.getInfo());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_INSTRUCTOR)) {
+            statement.setString(1, instructor.getFirstName());
+            statement.setString(2, instructor.getLastName());
+            statement.setString(3, instructor.getInfo());
             statement.setString(4, instructor.getState().toString().toLowerCase());
-            statement.setInt(5,instructor.getId());
+            statement.setInt(5, instructor.getId());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Update error",e);
+            throw new EntityRepositoryException("Update error", e);
         }
     }
 
@@ -65,7 +68,7 @@ public class InstructorRepository implements EntityRepository<Instructor> {
     public List<Instructor> query(EntitySpecification specification) throws EntityRepositoryException {
         List<Instructor> instructors = new LinkedList<>();
         try (PreparedStatement statement = specification.specified();
-             ResultSet resultSet = statement.executeQuery()){
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 Instructor instructor = new Instructor();
                 instructor.setId(resultSet.getInt(ColumnName.ID));
@@ -77,7 +80,7 @@ public class InstructorRepository implements EntityRepository<Instructor> {
             }
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Instructor query error",e);
+            throw new EntityRepositoryException("Instructor query error", e);
         }
         return instructors;
     }

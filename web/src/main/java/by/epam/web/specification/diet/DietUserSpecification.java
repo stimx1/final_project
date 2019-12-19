@@ -16,15 +16,17 @@ public class DietUserSpecification implements EntitySpecification {
             "LEFT JOIN diet ON diet.id=assigned_diet.diet_id WHERE users.id = ?;";
 
     private int id;
-    public DietUserSpecification(int id){
+
+    public DietUserSpecification(int id) {
         this.id = id;
     }
+
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_DIET);
-            statement.setInt(1,id);
+            statement.setInt(1, id);
         } catch (SQLException e) {
             logger.catching(e);
         }

@@ -3,7 +3,6 @@ package by.epam.web.servlet;
 import by.epam.web.command.ActionCommand;
 import by.epam.web.command.CommandProvider;
 import by.epam.web.command.PageName;
-import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.command.SessionRequestContent;
 import by.epam.web.exception.CommandException;
 import by.epam.web.resource.ConfigurationManager;
@@ -63,7 +62,7 @@ public class MainServlet extends HttpServlet {
             } else {
                 response.sendRedirect(redirect);
             }
-        } catch (CommandException e){
+        } catch (CommandException e) {
             logger.catching(e);
             throw new ServletException();
         }

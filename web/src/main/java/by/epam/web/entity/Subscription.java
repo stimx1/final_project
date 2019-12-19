@@ -9,9 +9,10 @@ public class Subscription extends Entity {
     private LocalDate startDay;
     private LocalDate endDay;
 
-    public Subscription(){}
+    public Subscription() {
+    }
 
-    public Subscription(String name, int price,int duration) {
+    public Subscription(String name, int price, int duration) {
         this.name = name;
         this.price = price;
         this.duration = duration;

@@ -32,7 +32,7 @@ public class DietRepositoryTest {
     @AfterTest
     void afterTest() throws SQLException {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()){
+        while (drivers.hasMoreElements()) {
             DriverManager.deregisterDriver(drivers.nextElement());
         }
     }
@@ -42,28 +42,28 @@ public class DietRepositoryTest {
         String url = DBConfigurationManger.getProperty(HOST);
         String user = DBConfigurationManger.getProperty(LOGIN);
         String pass = DBConfigurationManger.getProperty(PASSWORD);
-        connection = DriverManager.getConnection(url,user,pass);
+        connection = DriverManager.getConnection(url, user, pass);
     }
 
     @AfterClass
     void afterClass() throws SQLException {
-        if(resultSet !=null){
+        if (resultSet != null) {
             resultSet.close();
         }
-        if(statement != null){
+        if (statement != null) {
             statement.close();
         }
-        if(connection != null){
+        if (connection != null) {
             connection.close();
         }
     }
 
     @Test
     public void testAddEntity() throws EntityRepositoryException, SQLException {
-        Diet actual = new Diet("diet","info");
+        Diet actual = new Diet("diet", "info");
         repository.addEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_DIET);
-        statement.setString(1,"diet");
+        statement.setString(1, "diet");
         resultSet = statement.executeQuery();
         Diet expected = new Diet();
         while (resultSet.next()) {
@@ -72,15 +72,15 @@ public class DietRepositoryTest {
             expected.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
         }
         statement = connection.prepareStatement(SQL_DELETE_DIET);
-        statement.setInt(1,expected.getId());
+        statement.setInt(1, expected.getId());
         statement.execute();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testRemoveEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_DIET);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Diet diet = new Diet();
         while (resultSet.next()) {
@@ -90,7 +90,7 @@ public class DietRepositoryTest {
         }
         repository.removeEntity(diet);
         statement = connection.prepareStatement(SQL_SELECT_DIET);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Diet actual = new Diet();
         while (resultSet.next()) {
@@ -100,13 +100,13 @@ public class DietRepositoryTest {
         }
         repository.addEntity(diet);
         Diet expected = new Diet();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void testUpdateEntity() throws SQLException, EntityRepositoryException {
         statement = connection.prepareStatement(SQL_SELECT_DIET);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Diet actual = new Diet();
         while (resultSet.next()) {
@@ -117,7 +117,7 @@ public class DietRepositoryTest {
         actual.setDescription("info" + new Random().nextInt(1000));
         repository.updateEntity(actual);
         statement = connection.prepareStatement(SQL_SELECT_DIET);
-        statement.setString(1,"test");
+        statement.setString(1, "test");
         resultSet = statement.executeQuery();
         Diet expected = new Diet();
         while (resultSet.next()) {
@@ -125,6 +125,6 @@ public class DietRepositoryTest {
             expected.setName(resultSet.getString(ColumnName.NAME));
             expected.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
         }
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 }

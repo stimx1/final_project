@@ -8,7 +8,10 @@ import by.epam.web.specification.EntitySpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +23,12 @@ public class UserRepository implements EntityRepository<User> {
 
     @Override
     public void addEntity(User user) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT_USER)) {
-            statement.setString(1,user.getEmail());
-            statement.setString(2,user.getPass());
-            statement.setString(3,user.getFirstName());
-            statement.setString(4,user.getLastName());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_USER)) {
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getPass());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
             statement.execute();
         } catch (SQLException e) {
             logger.catching(e);
@@ -35,37 +38,37 @@ public class UserRepository implements EntityRepository<User> {
 
     @Override
     public void removeEntity(User user) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER)) {
-            statement.setInt(1,user.getId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_USER)) {
+            statement.setInt(1, user.getId());
             statement.execute();
         } catch (SQLException e) {
             logger.throwing(e);
-            throw new EntityRepositoryException("User remove error",e);
+            throw new EntityRepositoryException("User remove error", e);
         }
     }
 
     @Override
     public void updateEntity(User user) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER);) {
-                statement.setString(1,user.getEmail());
-                statement.setString(2,user.getPass());
-                statement.setString(3,user.getFirstName());
-                statement.setString(4,user.getLastName());
-                statement.setInt(5,user.getId());
-                statement.execute();
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_USER);) {
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getPass());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setInt(5, user.getId());
+            statement.execute();
         } catch (SQLException e) {
             logger.throwing(e);
-            throw new EntityRepositoryException("Incorrect query",e);
+            throw new EntityRepositoryException("Incorrect query", e);
         }
     }
 
     @Override
     public List<User> query(EntitySpecification specification) throws EntityRepositoryException {
         List<User> users = new ArrayList<>();
-        try(PreparedStatement statement = specification.specified();
-            ResultSet resultSet = statement.executeQuery()) {
+        try (PreparedStatement statement = specification.specified();
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt(ColumnName.ID));
@@ -78,7 +81,7 @@ public class UserRepository implements EntityRepository<User> {
             }
         } catch (SQLException e) {
             logger.throwing(e);
-            throw new EntityRepositoryException("Incorrect query",e);
+            throw new EntityRepositoryException("Incorrect query", e);
         }
         return users;
     }

@@ -73,12 +73,12 @@ public class UserService {
 
     public Map<String, Object> register(String email, String pass, String repeatedPass, String firstName, String lastName) throws ServiceException {
         RegistrationValidator validator = new RegistrationValidator();
-        Map<String, Object> map = validator.validate(email, pass, repeatedPass,firstName, lastName);
+        Map<String, Object> map = validator.validate(email, pass, repeatedPass, firstName, lastName);
         try {
             List<User> userList = repository.query(new UserEmailSpecification(email));
             if (userList.size() > 0) {
                 map.put(AttributeName.REGISTRATION_ERROR, true);
-                map.put(AttributeName.FLAG,true);
+                map.put(AttributeName.FLAG, true);
                 return map;
             }
             if (map.containsKey(AttributeName.FLAG)) {
@@ -95,10 +95,10 @@ public class UserService {
         return map;
     }
 
-    public Map<String,Object> updateUser(int userId,String email, String pass, String repeatedPass, String firstName, String lastName) throws ServiceException {
+    public Map<String, Object> updateUser(int userId, String email, String pass, String repeatedPass, String firstName, String lastName) throws ServiceException {
         RegistrationValidator validator = new RegistrationValidator();
-        Map<String, Object> map = validator.validate(email, pass, repeatedPass,firstName, lastName);
-        if(map.containsKey(AttributeName.FLAG)){
+        Map<String, Object> map = validator.validate(email, pass, repeatedPass, firstName, lastName);
+        if (map.containsKey(AttributeName.FLAG)) {
             return map;
         }
         String password = PasswordEncrypter.encrypt(pass);
@@ -106,9 +106,9 @@ public class UserService {
         user.setId(userId);
         try {
             repository.updateEntity(user);
-        }catch (EntityRepositoryException e){
+        } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw new ServiceException("Update error",e);
+            throw new ServiceException("Update error", e);
         }
         return map;
     }

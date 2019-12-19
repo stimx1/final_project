@@ -12,8 +12,8 @@ public class RegistrationValidator {
     private static final String EMAIL_REGEX = "^\\w[\\d\\w]{2,}@\\w+\\.\\p{Lower}{2,4}";
     private static final String NAME_REGEX = "[A-Z][[a-z][а-я]]+";
 
-    public Map<String,Object> validate(String email,String pass,String repeatedPass,  String firstName, String lastName){
-        Map<String,Object> map = new HashMap<>();
+    public Map<String, Object> validate(String email, String pass, String repeatedPass, String firstName, String lastName) {
+        Map<String, Object> map = new HashMap<>();
         boolean flag = false;
         if (validateEmail(email)) {
             map.put(AttributeName.INPUT_EMAIL, email);
@@ -45,29 +45,29 @@ public class RegistrationValidator {
             flag = true;
             map.put(AttributeName.INCORRECT_LAST_NAME, true);
         }
-        if(flag) {
+        if (flag) {
             map.put(AttributeName.FLAG, flag);
         }
         return map;
     }
 
-    private boolean validateEmail(String email){
+    private boolean validateEmail(String email) {
         return !email.isEmpty() && email.matches(EMAIL_REGEX) && email.length() < 50;
     }
 
-    private boolean validatePass(String pass){
-        return pass.length()>=6 && pass.length()< 40;
+    private boolean validatePass(String pass) {
+        return pass.length() >= 6 && pass.length() < 40;
     }
 
-    private boolean validateRepeatedPass(String pass, String repPass){
+    private boolean validateRepeatedPass(String pass, String repPass) {
         return pass.equals(repPass);
     }
 
-    private boolean validateLastName(String lastName){
+    private boolean validateLastName(String lastName) {
         return lastName.matches(NAME_REGEX);
     }
 
-    private boolean validateFirstName(String firstName){
+    private boolean validateFirstName(String firstName) {
         return firstName.matches(NAME_REGEX);
     }
 }

@@ -23,7 +23,7 @@ public class BoughtSubscriptionUserIdSpecification implements EntitySpecificatio
         PreparedStatement statement = null;
         try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_SUBSCRIPTION);
-            statement.setInt(1,userId);
+            statement.setInt(1, userId);
         } catch (SQLException e) {
             logger.catching(e);
         }

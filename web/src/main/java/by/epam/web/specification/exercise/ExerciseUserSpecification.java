@@ -15,15 +15,17 @@ public class ExerciseUserSpecification implements EntitySpecification {
             "RIGHT JOIN assigned_exercise ON users.id=assigned_exercise.user_id " +
             "LEFT JOIN exercise ON exercise.id=assigned_exercise.ex_id WHERE users.id = ?;";
     private int id;
-    public ExerciseUserSpecification(int id){
+
+    public ExerciseUserSpecification(int id) {
         this.id = id;
     }
+
     @Override
     public PreparedStatement specified() {
         PreparedStatement statement = null;
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection()) {
             statement = connection.prepareStatement(SQL_SELECT_DIET);
-            statement.setInt(1,id);
+            statement.setInt(1, id);
         } catch (SQLException e) {
             logger.catching(e);
         }

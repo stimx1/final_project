@@ -14,9 +14,9 @@ public enum CommandEnum {
             this.command = new LogoutCommand();
         }
     },
-    REGISTRATION{
+    REGISTRATION {
         {
-           this.command = new RegistrationCommand();
+            this.command = new RegistrationCommand();
         }
     },
     CHANGE_LOCALE {
@@ -24,148 +24,144 @@ public enum CommandEnum {
             this.command = new ChangeLocaleCommand();
         }
     },
-    GET_USERS{
+    GET_USERS {
         {
             this.command = new GetUsersCommand();
         }
     },
-    DELETE_USER{
+    DELETE_USER {
         {
             this.command = new DeleteUserCommand();
         }
     },
-    GET_INSTRUCTORS{
+    GET_INSTRUCTORS {
         {
             this.command = new GetInstructorsCommand();
         }
     },
-    ADD_INSTRUCTOR{
+    ADD_INSTRUCTOR {
         {
             this.command = new AddInstructorCommand();
         }
     },
-    DELETE_INSTRUCTOR{
+    DELETE_INSTRUCTOR {
         {
             this.command = new DeleteInstructorCommand();
         }
     },
-    GET_ASSIGNMENT{
+    GET_ASSIGNMENT {
         {
             this.command = new GetAssignmentCommand();
         }
     },
-    ADD_DIET{
+    ADD_DIET {
         {
             this.command = new AddDietCommand();
         }
     },
-    DELETE_DIET{
+    DELETE_DIET {
         {
             this.command = new DeleteDietCommand();
         }
     },
-    ADMIN_PANEL{
-        {
-            this.command = new AdminPanelCommand();
-        }
-    },
-    ADD_EXERCISE{
+    ADD_EXERCISE {
         {
             this.command = new AddExerciseCommand();
         }
     },
-    DELETE_EXERCISE{
+    DELETE_EXERCISE {
         {
             this.command = new DeleteExerciseCommand();
         }
     },
-    ASSIGN_DIET{
+    ASSIGN_DIET {
         {
             this.command = new AssignDietCommand();
         }
     },
-    DELETE_ASSIGNED_DIET{
+    DELETE_ASSIGNED_DIET {
         {
             this.command = new DeleteAssignedDietCommand();
         }
     },
-    ASSIGN_EXERCISE{
+    ASSIGN_EXERCISE {
         {
             this.command = new AssignExerciseCommand();
         }
     },
-    DELETE_ASSIGNED_EXERCISE{
+    DELETE_ASSIGNED_EXERCISE {
         {
             this.command = new DeleteAssignedExerciseCommand();
         }
     },
-    CHANGE_INSTRUCTOR{
+    CHANGE_INSTRUCTOR {
         {
             this.command = new ChangeInstructorCommand();
         }
     },
-    GET_SERVICES{
+    GET_SERVICES {
         {
             this.command = new GetServicesCommand();
         }
     },
-    ADD_SUBSCRIPTION{
+    ADD_SUBSCRIPTION {
         {
             this.command = new AddSubscriptionCommand();
         }
     },
-    DELETE_SUBSCRIPTION{
+    DELETE_SUBSCRIPTION {
         {
             this.command = new DeleteSubscriptionCommand();
         }
     },
-    USER_ACCOUNT{
+    USER_ACCOUNT {
         {
             this.command = new UserAccountCommand();
         }
     },
-    DEPOSIT_ACCOUNT{
+    DEPOSIT_ACCOUNT {
         {
             this.command = new DepositAccountCommand();
         }
     },
-    BUY_SUBSCRIPTION{
+    BUY_SUBSCRIPTION {
         {
             this.command = new BuySubscriptionCommand();
         }
     },
-    GET_DIETS{
+    GET_DIETS {
         {
             this.command = new GetDietsCommand();
         }
     },
-    GET_EXERCISES{
+    GET_EXERCISES {
         {
             this.command = new GetExercisesCommand();
         }
     },
-    GET_ASSIGNED_DIET{
+    GET_ASSIGNED_DIET {
         {
             this.command = new GetAssignedDietCommand();
         }
     },
-    GET_ASSIGNED_EXERCISE{
+    GET_ASSIGNED_EXERCISE {
         {
             this.command = new GetAssignedExerciseCommand();
         }
     },
-    COACHING_ROOM{
+    COACHING_ROOM {
         {
             this.command = new CoachingRoomCommand();
         }
     },
-    UPDATE_USER{
+    UPDATE_USER {
         {
             this.command = new UpdateUserCommand();
         }
     };
     ActionCommand command;
-    public ActionCommand getCurrentCommand(){
+
+    public ActionCommand getCurrentCommand() {
         return command;
     }
 }

@@ -18,7 +18,8 @@ public class Instructor extends Entity {
         this.info = info;
     }
 
-    public Instructor(){}
+    public Instructor() {
+    }
 
     public String getFirstName() {
         return firstName;

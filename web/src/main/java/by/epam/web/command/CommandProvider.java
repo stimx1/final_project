@@ -1,6 +1,5 @@
 package by.epam.web.command;
 
-import by.epam.web.resource.MessageManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

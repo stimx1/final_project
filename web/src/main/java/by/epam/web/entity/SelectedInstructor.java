@@ -4,7 +4,8 @@ public class SelectedInstructor extends Entity {
     private int userId;
     private int instructorId;
 
-    public SelectedInstructor(){}
+    public SelectedInstructor() {
+    }
 
     public SelectedInstructor(int userId, int instructorId) {
         this.userId = userId;

@@ -12,9 +12,10 @@ public class AssignedExerciseService {
     private static final AssignedExerciseService INSTANCE = new AssignedExerciseService();
     private AssignedExerciseRepository repository = new AssignedExerciseRepository();
 
-    private AssignedExerciseService(){}
+    private AssignedExerciseService() {
+    }
 
-    public static AssignedExerciseService getInstance(){
+    public static AssignedExerciseService getInstance() {
         return INSTANCE;
     }
 

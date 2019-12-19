@@ -2,16 +2,17 @@ package by.epam.web.entity;
 
 import java.util.StringJoiner;
 
-public class User extends Entity{
+public class User extends Entity {
     private String email;
     private String pass;
     private String lastName;
     private String firstName;
     private UserRole role;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String pass, String email,String lastName, String firstName, UserRole role) {
+    public User(String pass, String email, String lastName, String firstName, UserRole role) {
         this.pass = pass;
         this.lastName = lastName;
         this.firstName = firstName;

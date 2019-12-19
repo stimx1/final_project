@@ -19,9 +19,10 @@ public class InstructorService {
     private static final InstructorService INSTANCE = new InstructorService();
     private InstructorRepository repository = new InstructorRepository();
 
-    private InstructorService(){}
+    private InstructorService() {
+    }
 
-    public static InstructorService getInstance(){
+    public static InstructorService getInstance() {
         return INSTANCE;
     }
 
@@ -31,12 +32,12 @@ public class InstructorService {
             repository.addEntity(instructor);
         } catch (EntityRepositoryException e) {
             logger.catching(e);
-            throw  new ServiceException("InstructorService add error", e);
+            throw new ServiceException("InstructorService add error", e);
         }
     }
 
-    public void deleteInstructor(int id,String firstName, String lastName, String info) throws ServiceException {
-        Instructor instructor = new Instructor(id,State.BLOCKED,firstName,lastName,info);
+    public void deleteInstructor(int id, String firstName, String lastName, String info) throws ServiceException {
+        Instructor instructor = new Instructor(id, State.BLOCKED, firstName, lastName, info);
         try {
             repository.updateEntity(instructor);
         } catch (EntityRepositoryException e) {
@@ -48,7 +49,7 @@ public class InstructorService {
     public List<Instructor> findInstructors() throws ServiceException {
         try {
             return repository.query(new InstructorSpecification()).stream()
-                    .filter(o->o.getState() == State.UNBLOCKED)
+                    .filter(o -> o.getState() == State.UNBLOCKED)
                     .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
@@ -59,7 +60,7 @@ public class InstructorService {
     public List<Instructor> findSelectedInstructorByUserId(int userId) throws ServiceException {
         try {
             return repository.query(new InstructorUserSpecification(userId)).stream()
-                    .filter(o->o.getState() == State.UNBLOCKED)
+                    .filter(o -> o.getState() == State.UNBLOCKED)
                     .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);
@@ -70,7 +71,7 @@ public class InstructorService {
     public List<Instructor> findSelectedInstructor() throws ServiceException {
         try {
             return repository.query(new InstructorSelectedInstructorSpecification()).stream()
-                    .filter(o->o.getState() == State.UNBLOCKED)
+                    .filter(o -> o.getState() == State.UNBLOCKED)
                     .collect(Collectors.toList());
         } catch (EntityRepositoryException e) {
             logger.catching(e);

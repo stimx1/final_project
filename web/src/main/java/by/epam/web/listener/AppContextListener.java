@@ -10,10 +10,11 @@ import javax.servlet.ServletContextListener;
 
 public class AppContextListener implements ServletContextListener {
     private static final Logger logger = LogManager.getLogger(AppContextListener.class);
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext servletContext = sce.getServletContext();
-        servletContext.setAttribute("DbConnectionPool",DbConnectionPool.INSTANCE);
+        servletContext.setAttribute("DbConnectionPool", DbConnectionPool.INSTANCE);
         logger.info("Connection pool initialized");
     }
 

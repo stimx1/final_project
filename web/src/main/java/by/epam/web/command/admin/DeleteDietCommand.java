@@ -1,10 +1,6 @@
 package by.epam.web.command.admin;
 
-import by.epam.web.command.ActionCommand;
-import by.epam.web.command.AttributeName;
-import by.epam.web.command.PageName;
-import by.epam.web.command.RedirectName;
-import by.epam.web.command.SessionRequestContent;
+import by.epam.web.command.*;
 import by.epam.web.exception.CommandException;
 import by.epam.web.exception.ServiceException;
 import by.epam.web.resource.ConfigurationManager;
@@ -22,11 +18,11 @@ public class DeleteDietCommand implements ActionCommand {
         String description = sessionRequestContent.getParameter(AttributeName.DIET_DESCRIPTION);
         DietService service = DietService.getInstance();
         try {
-            service.deleteDiet(id,name,description);
+            service.deleteDiet(id, name, description);
             sessionRequestContent.setAttribute(AttributeName.REDIRECT, RedirectName.DIETS);
         } catch (ServiceException e) {
             logger.catching(e);
-            throw new CommandException("Diet delete error",e);
+            throw new CommandException("Diet delete error", e);
         }
 
         String page = ConfigurationManager.getProperty(PageName.DIET);

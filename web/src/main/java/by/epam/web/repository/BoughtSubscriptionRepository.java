@@ -1,7 +1,7 @@
 package by.epam.web.repository;
 
-import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.command.AttributeName;
+import by.epam.web.connection.DbConnectionPool;
 import by.epam.web.entity.BoughtSubscription;
 import by.epam.web.exception.EntityRepositoryException;
 import by.epam.web.specification.EntitySpecification;
@@ -19,29 +19,29 @@ public class BoughtSubscriptionRepository implements EntityRepository<BoughtSubs
 
     @Override
     public void addEntity(BoughtSubscription boughtSubscription) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT_SUBSCRIPTION)){
-            statement.setInt(1,boughtSubscription.getSubscriptionId());
-            statement.setInt(2,boughtSubscription.getUserId());
-            statement.setInt(3,boughtSubscription.getPrice());
-            statement.setDate(4,Date.valueOf(boughtSubscription.getStartDay()));
-            statement.setDate(5,Date.valueOf(boughtSubscription.getEndDay()));
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_SUBSCRIPTION)) {
+            statement.setInt(1, boughtSubscription.getSubscriptionId());
+            statement.setInt(2, boughtSubscription.getUserId());
+            statement.setInt(3, boughtSubscription.getPrice());
+            statement.setDate(4, Date.valueOf(boughtSubscription.getStartDay()));
+            statement.setDate(5, Date.valueOf(boughtSubscription.getEndDay()));
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Bought subscription add error",e);
+            throw new EntityRepositoryException("Bought subscription add error", e);
         }
     }
 
     @Override
     public void removeEntity(BoughtSubscription boughtSubscription) throws EntityRepositoryException {
-        try(Connection connection = DbConnectionPool.INSTANCE.getConnection();
-            PreparedStatement statement = connection.prepareStatement(SQL_DELETE_SUBSCRIPTION)){
-            statement.setInt(1,boughtSubscription.getId());
+        try (Connection connection = DbConnectionPool.INSTANCE.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_SUBSCRIPTION)) {
+            statement.setInt(1, boughtSubscription.getId());
             statement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Bought subscription remove error",e);
+            throw new EntityRepositoryException("Bought subscription remove error", e);
         }
     }
 
@@ -53,8 +53,8 @@ public class BoughtSubscriptionRepository implements EntityRepository<BoughtSubs
     @Override
     public List<BoughtSubscription> query(EntitySpecification specification) throws EntityRepositoryException {
         List<BoughtSubscription> subscriptions = new LinkedList<>();
-        try(PreparedStatement statement = specification.specified();
-            ResultSet resultSet = statement.executeQuery()) {
+        try (PreparedStatement statement = specification.specified();
+             ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 BoughtSubscription subscription = new BoughtSubscription();
                 subscription.setId(resultSet.getInt(AttributeName.ID));
@@ -67,7 +67,7 @@ public class BoughtSubscriptionRepository implements EntityRepository<BoughtSubs
             }
         } catch (SQLException e) {
             logger.catching(e);
-            throw new EntityRepositoryException("Incorrect query error",e);
+            throw new EntityRepositoryException("Incorrect query error", e);
         }
         return subscriptions;
     }
